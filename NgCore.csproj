@@ -6,9 +6,9 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp2.0</TargetFramework>
 	</PropertyGroup>
-	<ItemGroup>
+	<!-- <ItemGroup>
 		<Content Include="wwwroot\app\" />
-	</ItemGroup>
+	</ItemGroup> -->
 	<ItemGroup>
 		<PackageReference Include="BundlerMinifier.Core" Version="2.6.362" />
 		<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
