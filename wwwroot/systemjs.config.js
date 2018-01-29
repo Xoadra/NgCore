@@ -2,10 +2,13 @@
 
 
 
+//var SystemJS = require( 'systemjs' )
+
+
 ( function ( global ) {
 	SystemJS.config( {
 		baseURL: './wwwroot',
-		defaultJSExtensions: true,
+		//defaultJSExtensions: true,
 		// Default transpiler setup, which in this case is TypeScript
 		transpiler: 'ts',
 		// Paths to serve using an alias
@@ -13,12 +16,13 @@
 			'npm:':
 				'node_modules/',
 			'jspm':
-				'node_modules/jspm-packages/'
+				'jspm-packages/'
 		},
 		// Map tells the System loader where to look for things
 		map: {
 			// Identify the Angular app within the 'app' folder
-			'app': 'app',
+			'app':
+				'app',
 			// Angular bundles
 			'@angular/core':
 				'npm:@angular/core/bundles/core.umd.js',
@@ -53,7 +57,7 @@
 				main: './main.ts',
 				defaultExtension: 'ts',
 				/* meta: {
-					'./*.js': {
+					'./*.ts': {
 						loader: 'systemjs-angular-loader.js'
 					}
 				} */

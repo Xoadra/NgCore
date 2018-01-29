@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 namespace NgCore {
 	public class Program {
 		
-		/* public static void Main( string[ ] args ) {
+		public static void Main( string[ ] args ) {
 			BuildWebHost( args ).Run( );
 		}
 		
@@ -24,9 +24,9 @@ namespace NgCore {
 			WebHost.CreateDefaultBuilder( args )
 				.UseStartup<Startup>( )
 				.Build( );
-		 */
 		
-		public static void Main( string[ ] args ) {
+		
+		/* public static void Main( string[ ] args ) {
 			var host = new WebHostBuilder( )
 				.UseKestrel( )
 				.UseContentRoot( Directory.GetCurrentDirectory( ) )
@@ -35,7 +35,7 @@ namespace NgCore {
 				.UseApplicationInsights( )
 				.Build( );
 			host.Run( );
-        }
+        } */
 		
 	}
 }
