@@ -1,0 +1,17 @@
+
+
+
+
+{
+	"/core": {
+		"target": "http://localhost:5000",
+		"secure": false,
+		"pathRewrite": {
+			"^/": ""
+		},
+		//"logLevel": "debug"
+	}
+}
+
+
+

@@ -8,46 +8,37 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Logging;
 
 
 namespace NgCore {
 	public class Startup {
 		
-		public Startup( IConfiguration configuration ) {
-			Configuration = configuration;
-		}
-		
-		
-		/* public Startup( IHostingEnvironment env ) {
+		/* public Startup( IConfiguration configuration ) { Configuration = configuration; } */
+
+		public Startup( IHostingEnvironment env ) {
 			var builder = new ConfigurationBuilder( )
 				.SetBasePath( env.ContentRootPath )
 				.AddJsonFile( "appsettings.json", optional: true, reloadOnChange: true )
 				.AddJsonFile( $"appsettings.{ env.EnvironmentName }.json", optional: true )
 				.AddEnvironmentVariables( );
 			Configuration = builder.Build( );
-		} */
-		
-		
+		}
+
 		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices( IServiceCollection services ) {
-			services.AddMvc( );
-		}
+		public void ConfigureServices( IServiceCollection services ) { services.AddMvc( ); }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure( IApplicationBuilder app, IHostingEnvironment env ) {
-			if ( env.IsDevelopment( ) ) {
-				app.UseDeveloperExceptionPage( );
-			}
+			if ( env.IsDevelopment( ) ) { app.UseDeveloperExceptionPage( ); }
 			else { app.UseExceptionHandler( "/Home/Error" ); }
 			app.UseDefaultFiles( );
 			app.UseStaticFiles( );
-			app.UseStaticFiles( new StaticFileOptions {
-                FileProvider = new PhysicalFileProvider( Path.Combine( env.ContentRootPath, "node_modules" ) ),
-                RequestPath = "/node_modules"
-            } );
+			app.UseStaticFiles(new StaticFileOptions {
+				FileProvider = new PhysicalFileProvider( Path.Combine( env.ContentRootPath, "node_modules" ) ),
+				RequestPath = "/node_modules"
+			} );
 			app.UseMvc( routes => {
 				routes.MapRoute( name: "default", template: "{controller=Home}/{action=Index}/{id?}" );
 				routes.MapSpaFallbackRoute( "spa-fallback", new { controller = "home", action = "index" } );
@@ -56,6 +47,5 @@ namespace NgCore {
 		
 	}
 }
-
 
 
