@@ -15,11 +15,8 @@
 		<DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
 		<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
 	</ItemGroup>
-	<ItemGroup>
-		<TypeScriptCompile Include="wwwroot\app\app.component.ts" />
-	</ItemGroup>
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-		<TypeScriptTarget>ES5</TypeScriptTarget>
+	<!-- <PropertyGroup Condition="'$(Configuration)' == 'Debug'"> -->
+		<!-- <TypeScriptTarget>ES5</TypeScriptTarget>
 		<TypeScriptJSXEmit>None</TypeScriptJSXEmit>
 		<TypeScriptModuleKind>ES6</TypeScriptModuleKind>
 		<TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
@@ -31,9 +28,8 @@
 		<TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
 		<TypeScriptSourceMap>True</TypeScriptSourceMap>
 		<TypeScriptMapRoot></TypeScriptMapRoot>
-		<TypeScriptSourceRoot></TypeScriptSourceRoot>
-	</PropertyGroup>
+		<TypeScriptSourceRoot></TypeScriptSourceRoot> -->
+	<!-- </PropertyGroup> -->
 </Project>
-
 
 

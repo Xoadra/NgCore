@@ -2,6 +2,10 @@
 
 
 
+// This file may now no longer be necessary, but preserving just in case
+
+
+
 //import { System } from 'systemjs'
 //var SystemJS = require( 'systemjs' )
 
@@ -16,18 +20,36 @@
 		},
 		map: {
 			'app': 'root:app',
-			'@angular/core': 'npm:@angular/core/',
-			'@angular/common': 'npm:@angular/common/',
-			'@angular/animations': 'npm:@angular/animations/',
-			'@angular/animations/browser': 'npm:@angular/animations/',
-			'@angular/platform-browser/animations': 'npm:@angular/platform-browser/',
-			'@angular/compiler': 'npm:@angular/compiler/',
-			'@angular/platform-browser': 'npm:@angular/platform-browser/',
-			'@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/',
-			'@angular/common/http': 'npm:@angular/common/http/',
-			'@angular/http': 'npm:@angular/http/',
-			'@angular/router': 'npm:@angular/router/',
-			'@angular/forms': 'npm:@angular/forms/',
+			// Current Angular module partial route paths
+			/* '@angular/animations': 'npm:@angular/animations/', */
+			/* '@angular/animations/browser': 'npm:@angular/animations/', */
+			/* '@angular/core': 'npm:@angular/core/', */
+			/* '@angular/common': 'npm:@angular/common/', */
+			/* '@angular/common/http': 'npm:@angular/common/http/', */
+			/* '@angular/compiler': 'npm:@angular/compiler/', */
+			/* '@angular/forms': 'npm:@angular/forms/', */
+			/* '@angular/http': 'npm:@angular/http/', */
+			/* '@angular/platform-browser': 'npm:@angular/platform-browser/', */
+			/* '@angular/platform-browser/animations': 'npm:@angular/platform-browser/', */
+			/* '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/', */
+			/* '@angular/router': 'npm:@angular/router/', */
+			// Previous Angular module full route paths
+			/* '@angular/core':
+				'npm:@angular/core/bundles/core.umd.js',
+			'@angular/common':
+				'npm:@angular/common/bundles/common.umd.js',
+			'@angular/compiler':
+				'npm:@angular/compiler/bundles/compiler.umd.js',
+			'@angular/platform-browser':
+				'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+			'@angular/platform-browser-dynamic':
+				'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+			'@angular/http':
+				'npm:@angular/http/bundles/http.umd.js',
+			'@angular/router':
+				'npm:@angular/router/bundles/router.umd.js',
+			'@angular/forms':
+				'npm:@angular/forms/bundles/forms.umd.js', */
 		},
 		packages: {
 			app: {
