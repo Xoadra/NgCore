@@ -1,0 +1,53 @@
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header" (click)="setTitle( 'Home - NgCore' )">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only"> Toggle navigation </span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!-- <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"> NgCore </a> -->
+			<a [routerLink]="[ 'home' ]" routerLinkActive="active" class="navbar-brand"> NgCore </a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<!-- <a asp-area="" asp-controller="Home" asp-action="Index"> Home </a> -->
+					<a class="nav-link" (click)="setTitle( 'Home - NgCore' )" [routerLink]="[ 'home' ]" routerLinkActive="active">
+						Home
+					</a>
+				</li>
+				<li>
+					<!-- <a asp-area="" asp-controller="Home" asp-action="About"> About </a> -->
+					<a class="nav-link" (click)="setTitle( 'About - A2SPA' )" [routerLink]="[ 'about' ]">
+						About
+					</a>
+				</li>
+				<li>
+					<!-- <a asp-area="" asp-controller="Home" asp-action="Contact"> Contact </a> -->
+					<a class="nav-link" (click)="setTitle( 'Contact - A2SPA' )" [routerLink]="[ 'contact' ]">
+						Contact
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container body-content">
+	<router-outlet></router-outlet>
+	<!-- @RenderBody( ) -->
+	@{ string razorServerSideData = "ASP.Net Core"; }
+	<hr />
+	<footer>
+		<p> &copy; 2018 - NgCore = ( @razorServerSideData + {{ angularClientSideData }} ) <sup> 2 </sup></p>
+	</footer>
+</div>
+
+
+
