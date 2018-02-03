@@ -15,6 +15,9 @@
 		<DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
 		<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
 	</ItemGroup>
+	<Target Name="AngularBuild" AfterTargets="Build">
+		<Exec Command="npm run build" />
+	</Target>
 	<!-- <PropertyGroup Condition="'$(Configuration)' == 'Debug'"> -->
 		<!-- <TypeScriptTarget>ES5</TypeScriptTarget>
 		<TypeScriptJSXEmit>None</TypeScriptJSXEmit>
@@ -31,5 +34,6 @@
 		<TypeScriptSourceRoot></TypeScriptSourceRoot> -->
 	<!-- </PropertyGroup> -->
 </Project>
+
 
 

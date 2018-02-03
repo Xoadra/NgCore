@@ -12,7 +12,11 @@
 			"root": "wwwroot",
 			"outDir": "Root",
 			"assets": [
-				"favicon.ico"
+				"css",
+				"favicon.ico",
+				"images",
+				"js",
+				"lib"
 			],
 			"index": "index.html",
 			"main": "main.ts",
