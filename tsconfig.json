@@ -3,7 +3,7 @@
 
 
 {
-	"compileOnSave": false,
+	"compileOnSave": true,
 	"compilerOptions": {
 		"declaration": false,
 		"diagnostics": true,

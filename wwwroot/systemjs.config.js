@@ -12,8 +12,8 @@
 
 ( function ( global ) {
 	SystemJS.config( {
-		//baseURL: '/',
-		//transpiler: 'typescript',
+		baseURL: '/',
+		transpiler: 'typescript',
 		paths: {
 			'root:': 'wwwroot/',
 			'npm:': 'node_modules/'
@@ -34,7 +34,7 @@
 			/* '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/', */
 			/* '@angular/router': 'npm:@angular/router/', */
 			// Previous Angular module full route paths
-			/* '@angular/core':
+			'@angular/core':
 				'npm:@angular/core/bundles/core.umd.js',
 			'@angular/common':
 				'npm:@angular/common/bundles/common.umd.js',
@@ -49,7 +49,7 @@
 			'@angular/router':
 				'npm:@angular/router/bundles/router.umd.js',
 			'@angular/forms':
-				'npm:@angular/forms/bundles/forms.umd.js', */
+				'npm:@angular/forms/bundles/forms.umd.js',
 		},
 		packages: {
 			app: {

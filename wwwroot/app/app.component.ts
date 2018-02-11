@@ -10,7 +10,7 @@ import { Title } from '@angular/platform-browser'
 @Component( {
 	selector: 'app-root',
 	//templateUrl: './app.component.html',
-	templateUrl: './partial/appcomponent',
+	templateUrl: '../../Views/Partials/AppComponent.cshtml',
 	styleUrls: [ './app.component.css' ]
 } )
 
