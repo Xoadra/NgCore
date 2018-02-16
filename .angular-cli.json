@@ -18,7 +18,7 @@
 				"js",
 				"lib"
 			],
-			"index": "index.html",
+			"index": "../Views/Shared/_Layout.cshtml",
 			"main": "main.ts",
 			"polyfills": "polyfills.ts",
 			"test": "test.ts",
@@ -43,11 +43,11 @@
 	},
 	"lint": [
 		{
-			"project": "src/tsconfig.app.json",
+			"project": "wwwroot/tsconfig.app.json",
 			"exclude": "**/node_modules/**"
 		},
 		{
-			"project": "src/tsconfig.spec.json",
+			"project": "wwwroot/tsconfig.spec.json",
 			"exclude": "**/node_modules/**"
 		},
 		{
