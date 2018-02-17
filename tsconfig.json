@@ -17,7 +17,7 @@
 		"moduleResolution": "node",
 		"outDir": "Root",
 		"removeComments": false,
-		"rootDir": "wwwroot",
+		"rootDir": "Views",
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"target": "es5",

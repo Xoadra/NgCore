@@ -14,9 +14,9 @@ const path = require( 'path' )
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: {
-		main: './wwwroot/main.ts',
-		polyfills: './wwwroot/polyfills.ts',
-		vendor: './wwwroot/vendor.ts'
+		main: './Views/main.ts',
+		polyfills: './Views/polyfills.ts',
+		vendor: './Views/vendor.ts'
 	},
 	resolve: {
 		extensions: [ '.ts', '.js' ]
@@ -26,11 +26,11 @@ module.exports = {
 			{
 				test: /\.ts$/,
 				loaders: [
-					'awesome-typescript-loader',
-					/* {
-						loader: 'awesome-typescript-loader'
-						options: { configFileName: helpers.root( 'wwwroot', 'tsconfig.json' ) }, 
-					}, */
+					/* 'awesome-typescript-loader', */
+					{
+						loader: 'awesome-typescript-loader',
+						options: { configFileName: path.resolve( __dirname, 'tsconfig.json' ) }, 
+					},
 					'angular2-template-loader'
 				]
 			},
@@ -39,14 +39,18 @@ module.exports = {
 			{ test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
 			/* {
 				test: /\.css$/,
-				exclude: helpers.root( 'wwwroot', 'app' ),
+				exclude: path.resolve( __dirname, 'app' ),
 				loader: Extract.extract( { fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' } )
 			}, */
-			/* {
+			{
 				test: /\.css$/,
-				include: helpers.root( 'wwwroot', 'app' ),
+				include: [
+					path.resolve( __dirname, 'app' ),
+					path.resolve( __dirname, 'css' ),
+					path.resolve( __dirname, 'lib' ),
+				],
 				loader: 'raw-loader'
-			} */
+			}
 		]
 	},
 	plugins: [
@@ -56,7 +60,7 @@ module.exports = {
 		new Uglify( { sourceMap: true } ),
 		new Webpack.ContextReplacementPlugin(
 			/angular(\\|\/)core(\\|\/)@angular/,
-			/* helpers.root( './wwwroot' ), */
+			/* path.resolve( './Views' ), */
 			{  } // Map of the routes
 		),
 		new Webpack.optimize.CommonsChunkPlugin( {
