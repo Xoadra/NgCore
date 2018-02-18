@@ -5,6 +5,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -27,7 +28,16 @@ namespace NgCore {
 		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices( IServiceCollection services ) { services.AddMvc( ); }
+		public void ConfigureServices( IServiceCollection services ) {
+			services.Configure<RazorViewEngineOptions>( razor => {
+				razor.ViewLocationFormats.Clear( );
+				razor.ViewLocationFormats.Add( "/Root/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "/Views/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "/Views/Shared/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "/Views/{1}/{0}" + RazorViewEngine.ViewExtension );
+			} );
+			services.AddMvc( );
+		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure( IApplicationBuilder app, IHostingEnvironment env ) {

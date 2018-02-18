@@ -8,21 +8,16 @@ import { BrowserModule } from '@angular/platform-browser'
 import { RouteModule } from './app.routing'
 
 import { AppComponent } from './app.component'
-import { AboutComponent } from './about/about.component'
-import { ContactComponent } from './contact/contact.component'
-import { IndexComponent } from './index/index.component'
 
 
 
 @NgModule( {
 	declarations: [
-		AppComponent,
-		AboutComponent,
-		ContactComponent,
-		IndexComponent
+		AppComponent
 	],
 	imports: [
-		BrowserModule
+		BrowserModule,
+		RouteModule
 	],
 	providers: [ ],
 	bootstrap: [ AppComponent ]
@@ -30,6 +25,5 @@ import { IndexComponent } from './index/index.component'
 
 
 export class AppModule {  }
-
 
 

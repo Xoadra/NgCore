@@ -8,7 +8,7 @@ import { Component } from '@angular/core'
 
 @Component( {
 	selector: 'app-index',
-	templateUrl: '../../../Views/Partials/IndexComponent.cshtml',
+	templateUrl: '../../../Views/Partial/IndexComponent.cshtml',
 	styleUrls: [ './index.component.css' ]
 } )
 

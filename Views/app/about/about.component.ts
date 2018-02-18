@@ -8,7 +8,7 @@ import { Component } from '@angular/core'
 
 @Component( {
 	selector: 'app-about',
-	templateUrl: '../../../Views/Partials/AboutComponent.cshtml',
+	templateUrl: '../../../Views/Partial/AboutComponent.cshtml',
 	styleUrls: [ './about.component.css' ]
 } )
 

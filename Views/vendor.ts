@@ -11,6 +11,12 @@ import '@angular/router'
 
 import 'rxjs'
 
+import '../Views/lib/jquery/dist/jquery'
+/* import '../Views/lib/jquery-validation/dist/additional-methods' */
+/* import '../Views/lib/jquery-validation/dist/additional-methods.min' */
+import '../Views/lib/jquery-validation/dist/jquery.validate'
+/* import '../Views/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive' */
+
 import '../Views/lib/bootstrap/dist/js/bootstrap'
 /* import '../Views/lib/bootstrap/dist/js/npm' */
 import '../Views/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot'
@@ -20,11 +26,6 @@ import '../Views/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff'
 import '../Views/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2'
 import '../Views/lib/bootstrap/dist/css/bootstrap-theme'
 import '../Views/lib/bootstrap/dist/css/bootstrap'
-
-import '../Views/lib/jquery/dist/jquery'
-import '../Views/lib/jquery-validation/dist/additional-methods'
-import '../Views/lib/jquery-validation/dist/jquery.validate'
-import '../Views/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive'
 
 
 import '../Views/js/site'
@@ -43,5 +44,6 @@ import '/js/site.js'
 import '/lib/jquery/dist/jquery.min.js'
 import '/lib/bootstrap/dist/js/bootstrap.min.js'
 import '/js/site.min.js' */
+
 
 
