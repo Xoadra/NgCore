@@ -18,7 +18,7 @@ module.exports = {
 		polyfills: './Views/polyfills.ts',
 		vendor: './Views/vendor.ts'
 	},
-	resolve: { extensions: [ '.ts', '.js', '.css' ] },
+	resolve: { extensions: [ '.ts', '.js' ] },
 	module: {
 		rules: [
 			{
@@ -33,11 +33,11 @@ module.exports = {
 			},
 			{
 				test: /\.(cshtml|html)$/,
-				/* include: [
+				exclude: [
 					path.resolve( __dirname, 'Home' ),
 					path.resolve( __dirname, 'Partial' ),
 					path.resolve( __dirname, 'Shared' )
-				], */
+				],
 				loader: 'html-loader'
 			},
 			{ test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file-loader?name=images/[name].bundle.[ext]' },
@@ -45,24 +45,21 @@ module.exports = {
 			{
 				test: /\.css$/,
 				exclude: [ path.resolve( __dirname, 'app' ) ],
-				loader: Extract.extract( { fallback: 'style-loader', use: 'css-loader?sourceMap' } )
+				loader: Extract.extract( { fallback: 'style-loader', use: [ 'css-loader?sourceMap' ] } )
 			},
-			/* {
-				test: /\.(cshtml|html|css)$/,
+			{
+				test: /\.css$/,
 				include: [
-					path.resolve( __dirname, 'app' ),
-					path.resolve( __dirname, 'Home' ),
-					path.resolve( __dirname, 'Partial' ),
-					path.resolve( __dirname, 'Shared' )
+					path.resolve( __dirname, 'app' )
 				],
 				loader: 'raw-loader'
-			} */
+			}
 		]
 	},
 	plugins: [
 		new Clean( [ 'Root' ] ),
-		/* new Html( { filename: '_Layout.cshtml', template: 'Views/_Layout.cshtml' } ), */
-		new Extract( '[name].bundle.css' ),
+		/* new Html( { filename: '_Layout.cshtml', template: 'Views/Shared/_Layout.cshtml' } ), */
+		new Extract( 'styles.bundle.css' ),
 		new Uglify( { sourceMap: true } ),
 		new Webpack.optimize.CommonsChunkPlugin( { name: [ 'main', 'vendor', 'polyfills' ] } ),
 	],
@@ -73,5 +70,6 @@ module.exports = {
 		publicPath: '/'
 	},
 }
+
 
 
