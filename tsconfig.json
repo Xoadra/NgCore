@@ -15,7 +15,7 @@
 		],
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"outDir": "Views",
+		"outDir": "Root",
 		"removeComments": false,
 		"rootDir": "Views",
 		"sourceMap": true,

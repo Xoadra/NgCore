@@ -13,9 +13,9 @@
 ( function ( global ) {
 	SystemJS.config( {
 		baseURL: '/',
-		transpiler: 'typescript',
+		/* transpiler: 'typescript', */
 		paths: {
-			'root:': 'wwwroot/',
+			/* 'root:': 'Views/', */
 			'npm:': 'node_modules/'
 		},
 		map: {
@@ -53,7 +53,7 @@
 		},
 		packages: {
 			app: {
-				defaultExtension: 'ts',
+				defaultExtension: 'js',
 				//meta: { './*.js': { loader: 'systemjs-angular-loader.js' } }
 			},
 			rxjs: {
