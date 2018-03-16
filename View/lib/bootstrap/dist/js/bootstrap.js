@@ -4,7 +4,7 @@
  * Licensed under the MIT license
  */
 
- import jQuery from '../../../jquery/dist/jquery.js'
+/*  import jQuery from '../../../jquery/dist/jquery.js' */
  
  
 

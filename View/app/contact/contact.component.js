@@ -13,7 +13,6 @@ var ContactComponent = /** @class */ (function () {
     ContactComponent = __decorate([
         core_1.Component({
             selector: 'app-contact',
-            //templateUrl: '../../../Views/Partial/ContactComponent.cshtml',
             templateUrl: 'Partial/ContactComponent',
             styleUrls: ['./contact.component.css']
         })

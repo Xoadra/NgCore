@@ -13,7 +13,6 @@ var IndexComponent = /** @class */ (function () {
     IndexComponent = __decorate([
         core_1.Component({
             selector: 'app-index',
-            //templateUrl: '../../../Views/Partial/IndexComponent.cshtml',
             templateUrl: 'Partial/IndexComponent',
             styleUrls: ['./index.component.css']
         })

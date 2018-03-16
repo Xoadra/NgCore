@@ -32,11 +32,11 @@ namespace NgCore {
 			services.Configure<RazorViewEngineOptions>( razor => {
 				razor.ViewLocationFormats.Clear( );
 				razor.ViewLocationFormats.Add( "~/Root/{0}" + RazorViewEngine.ViewExtension );
-				razor.ViewLocationFormats.Add( "~/Views/{0}" + RazorViewEngine.ViewExtension );
-				razor.ViewLocationFormats.Add( "~/Views/Home/{0}" + RazorViewEngine.ViewExtension );
-				razor.ViewLocationFormats.Add( "~/Views/Partial/{0}" + RazorViewEngine.ViewExtension );
-				razor.ViewLocationFormats.Add( "~/Views/Shared/{0}" + RazorViewEngine.ViewExtension );
-				razor.ViewLocationFormats.Add( "~/Views/{1}/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "~/View/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "~/View/Home/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "~/View/Partial/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "~/View/Shared/{0}" + RazorViewEngine.ViewExtension );
+				razor.ViewLocationFormats.Add( "~/View/{1}/{0}" + RazorViewEngine.ViewExtension );
 			} );
 			services.AddMvc( );
 		}

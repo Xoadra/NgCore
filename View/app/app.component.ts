@@ -9,7 +9,6 @@ import { Title } from '@angular/platform-browser'
 
 @Component( {
 	selector: 'app-root',
-	//templateUrl: '../../Views/Partial/AppComponent.cshtml',
 	templateUrl: 'Partial/AppComponent',
 	styleUrls: [ './app.component.css' ]
 } )
@@ -29,5 +28,6 @@ export class AppComponent {
 	}
 
 }
+
 
 

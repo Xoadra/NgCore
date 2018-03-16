@@ -23,7 +23,6 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',
-            //templateUrl: '../../Views/Partial/AppComponent.cshtml',
             templateUrl: 'Partial/AppComponent',
             styleUrls: ['./app.component.css']
         }),

@@ -13,7 +13,6 @@ var AboutComponent = /** @class */ (function () {
     AboutComponent = __decorate([
         core_1.Component({
             selector: 'app-about',
-            //templateUrl: '../../../Views/Partial/AboutComponent.cshtml',
             templateUrl: 'Partial/AboutComponent',
             styleUrls: ['./about.component.css']
         })
