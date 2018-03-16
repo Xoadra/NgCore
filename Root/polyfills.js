@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
@@ -14,7 +14,7 @@
  *
  * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
  */
-Object.defineProperty( exports, "__esModule", { value: true } )
+Object.defineProperty(exports, "__esModule", { value: true });
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
@@ -36,8 +36,8 @@ Object.defineProperty( exports, "__esModule", { value: true } )
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 // import 'classlist.js'  // Run `npm install --save classlist.js`.
 /** Evergreen browsers require these. **/
-require( "core-js/es6/reflect" )
-require( "core-js/es7/reflect" )
+require("core-js/es6/reflect");
+require("core-js/es7/reflect");
 /**
  * Required to support Web Animations `@angular/animation`.
  * Needed for: All but Chrome, Firefox and Opera. http://caniuse.com/#feat=web-animation
@@ -46,7 +46,7 @@ require( "core-js/es7/reflect" )
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-require( "zone.js/dist/zone" ) // Included with Angular CLI.
+require("zone.js/dist/zone"); // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */

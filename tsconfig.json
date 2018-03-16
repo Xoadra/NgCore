@@ -3,7 +3,7 @@
 
 
 {
-	"compileOnSave": false,
+	"compileOnSave": true,
 	"compilerOptions": {
 		"declaration": false,
 		"diagnostics": true,
@@ -17,7 +17,7 @@
 		"moduleResolution": "node",
 		"outDir": "Root",
 		"removeComments": false,
-		"rootDir": "Views",
+		"rootDir": "Root",
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"target": "es5",

@@ -14,7 +14,7 @@ namespace NgCore {
 		
 		 public static IWebHost BuildWebHost( string[ ] args ) =>
 			 WebHost.CreateDefaultBuilder( args )
-			 	.UseWebRoot( "Views" )
+			 	.UseWebRoot( "Root" )
 				.UseStartup<Startup>( )
 				.Build( );
 		

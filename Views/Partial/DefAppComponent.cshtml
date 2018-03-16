@@ -41,11 +41,13 @@
 
 <div class="container body-content">
 	<router-outlet></router-outlet>
+	<!-- @RenderBody( ) -->
 	@{ string razorServerSideData = "ASP.Net Core"; }
 	<hr />
 	<footer>
 		<p> &copy; 2018 - NgCore = ( @razorServerSideData + {{ angularClientSideData }} ) <sup> 2 </sup></p>
 	</footer>
 </div>
+
 
 

@@ -23,8 +23,8 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',
-            //templateUrl: './app.component.html',
-            templateUrl: '../../Views/Partial/AppComponent.cshtml',
+            //templateUrl: '../../Views/Partial/AppComponent.cshtml',
+            templateUrl: 'Partial/AppComponent',
             styleUrls: ['./app.component.css']
         }),
         __metadata("design:paramtypes", [platform_browser_1.Title])

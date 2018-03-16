@@ -1,7 +1,0 @@
-﻿
-
-
-
-// Write your JavaScript code.
-
-

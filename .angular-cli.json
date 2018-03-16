@@ -9,8 +9,8 @@
 	},
 	"apps": [
 		{
-			"root": "Views",
-			"outDir": "Root",
+			"root": "Root",
+			"outDir": "Out",
 			"assets": [
 				"css",
 				"favicon.ico",
