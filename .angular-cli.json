@@ -9,7 +9,7 @@
 	},
 	"apps": [
 		{
-			"root": "View",
+			"root": "Angular",
 			"outDir": "Root",
 			"assets": [
 				"css",

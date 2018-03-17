@@ -5,6 +5,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
+
 namespace NgCore.Controllers {
 	public class PartialController : Controller {
 		
@@ -18,6 +19,5 @@ namespace NgCore.Controllers {
 		
 	}
 }
-
 
 

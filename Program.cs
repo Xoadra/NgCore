@@ -7,14 +7,15 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 
+
 namespace NgCore {
 	public class Program {
 		
 		public static void Main( string[ ] args ) { BuildWebHost( args ).Run( ); }
 		
-		 public static IWebHost BuildWebHost( string[ ] args ) =>
-			 WebHost.CreateDefaultBuilder( args )
-			 	.UseWebRoot( "View" )
+		public static IWebHost BuildWebHost( string[ ] args ) =>
+			WebHost.CreateDefaultBuilder( args )
+				.UseWebRoot( "Angular" )
 				.UseStartup<Startup>( )
 				.Build( );
 		
@@ -30,6 +31,5 @@ namespace NgCore {
 		
 	}
 }
-
 
 

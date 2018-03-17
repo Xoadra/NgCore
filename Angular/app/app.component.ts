@@ -26,7 +26,7 @@ export class AppComponent {
 	setTitle( title: string ) {
 		this._title.setTitle( title )
 	}
-
+	
 }
 
 

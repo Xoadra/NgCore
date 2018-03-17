@@ -5,6 +5,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
+
 namespace NgCore.Controllers {
 	public class HomeController : Controller {
 		
@@ -29,5 +30,6 @@ namespace NgCore.Controllers {
 		
 	}
 }
+
 
 
