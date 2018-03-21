@@ -14,9 +14,9 @@ const path = require( 'path' )
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: {
-		main: './Views/main.ts',
-		polyfills: './Views/polyfills.ts',
-		vendor: './Views/vendor.ts'
+		main: './Angular/main.ts',
+		polyfills: './Angular/polyfills.ts',
+		vendor: './Angular/vendor.ts'
 	},
 	resolve: { extensions: [ '.ts', '.js' ] },
 	module: {
@@ -33,11 +33,16 @@ module.exports = {
 			},
 			{
 				test: /\.(cshtml|html)$/,
-				exclude: [
+				include: [
+					path.resolve( __dirname, 'Views/Home' ),
+					path.resolve( __dirname, 'Views/Partial' ),
+					path.resolve( __dirname, 'Views/Shared' ),
+				],
+				/* exclude: [
 					path.resolve( __dirname, 'Home' ),
 					path.resolve( __dirname, 'Partial' ),
 					path.resolve( __dirname, 'Shared' )
-				],
+				], */
 				loader: 'html-loader'
 			},
 			{ test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file-loader?name=images/[name].bundle.[ext]' },
@@ -58,7 +63,7 @@ module.exports = {
 	},
 	plugins: [
 		new Clean( [ 'Root' ] ),
-		/* new Html( { filename: '_Layout.cshtml', template: 'Views/Shared/_Layout.cshtml' } ), */
+		new Html( { filename: '_Layout.cshtml', template: 'Views/Shared/_WebLayout.cshtml' } ),
 		new Extract( 'styles.bundle.css' ),
 		new Uglify( { sourceMap: true } ),
 		new Webpack.optimize.CommonsChunkPlugin( { name: [ 'main', 'vendor', 'polyfills' ] } ),
@@ -70,6 +75,5 @@ module.exports = {
 		publicPath: '/'
 	},
 }
-
 
 

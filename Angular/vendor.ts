@@ -10,6 +10,7 @@ import '@angular/http'
 import '@angular/router'
 
 import 'rxjs'
+/* import 'systemjs' */
 
 import '../Angular/lib/jquery/dist/jquery'
 /* import '../Angular/lib/jquery-validation/dist/additional-methods' */
@@ -33,6 +34,10 @@ import '../Angular/js/site'
 /* import '../Angular/css/site' */
 
 
+/* import '../Angular/systemjs.config'
+import '../Angular/systemjs.loader' */
+
+
 /* import '/lib/bootstrap/dist/css/bootstrap.css'
 import '/lib/bootstrap/dist/js/bootstrap.min.js'
 import '/css/site.css'
@@ -44,6 +49,5 @@ import '/js/site.js'
 import '/lib/jquery/dist/jquery.min.js'
 import '/lib/bootstrap/dist/js/bootstrap.min.js'
 import '/js/site.min.js' */
-
 
 
