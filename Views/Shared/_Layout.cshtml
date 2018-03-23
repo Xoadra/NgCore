@@ -5,10 +5,15 @@
 <html>
 	
 	<head>
+		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title> @ViewData[ "Title" ] - NgCore </title>
 		<base href="~/">
+		
+		@Html.Raw( ViewData[ "Meta" ] )
+		@Html.Raw( ViewData[ "Links" ] )
+		@Html.Raw( ViewData[ "Styles" ] )
 		
 		<environment include="Development">
 			<!-- <link rel="stylesheet" href="~/node_modules/bootstrap/dist/css/bootstrap.css" /> -->
@@ -89,6 +94,8 @@
 			</script>
 		</environment>
 		
+		@Html.Raw( ViewData[ "TransferData" ] )
+		
 		@RenderSection( "Scripts", required: false )
 		
 		<!-- <script type="text/javascript" src="~/Root/polyfills.bundle.js"></script>
@@ -98,6 +105,5 @@
 	</body>
 	
 </html>
-
 
 

@@ -2,27 +2,68 @@
 
 
 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.NodeServices;
+using Microsoft.AspNetCore.SpaServices.Prerendering;
+using Microsoft.Extensions.DependencyInjection;
+using NgCore.Models;
 
 
 
 namespace NgCore.Controllers {
 	public class HomeController : Controller {
 		
-		public IActionResult Index( ) {
+		/* public IActionResult Index( ) {
 			ViewData[ "Title" ] = "Home";
+			return View( );
+		} */
+		
+		public async Task<IActionResult> Index( ) {
+			// Grab key website data that will be serialized
+			var node = Request.HttpContext.RequestServices.GetRequiredService<INodeServices>( );
+			var zone = Request.HttpContext.RequestServices.GetRequiredService<IHostingEnvironment>( );
+			var root = zone.ContentRootPath;
+			var item = Request.HttpContext.Features.Get<IHttpRequestFeature>( );
+			var query = item.RawTarget;
+			var url = $"{ Request.Scheme }://{ Request.Host }{ query }";
+			// Allow for the passing of data as a request
+			TransferData trans = new TransferData( );
+			trans.info = Data( Request );
+			trans.thisCameFromDotNET = "I do it from behind...";
+			// Prerender and serialize the frontend web app
+			var pre = await Prerenderer.RenderToString(
+				"/",
+				node,
+				new JavaScriptModuleExport( root + "/Root/Angular" ),
+				url,
+				query,
+				trans,
+				30000,
+				Request.PathBase.ToString( )
+			);
+			// Website data passed to the layout template
+			ViewData[ "SpaHtml" ] = pre.Html;
+			ViewData[ "Title" ] = pre.Globals[ "title" ];
+			ViewData[ "Styles" ] = pre.Globals[ "styles" ];
+			ViewData[ "Meta" ] = pre.Globals[ "meta" ];
+			ViewData[ "Links" ] = pre.Globals[ "links" ];
+			ViewData[ "TransferData" ] = pre.Globals[ "transferData" ];
+			// Set up the prerendered view with the new data
 			return View( );
 		}
 		
-		/* public IActionResult About( ) {
-			ViewData[ "Message" ] = "Your application description page.";
-			return View( );
-		} */
-		
-		/* public IActionResult Contact( ) {
-			ViewData[ "Message" ] = "Your contact page.";
-			return View( );
-		} */
+		private IRequest Data( HttpRequest data ) {
+			// Unknown purpose, but info is needed above
+			IRequest ugly = new IRequest( );
+			ugly.cookies = data.Cookies;
+			ugly.headers = data.Headers;
+			ugly.host = data.Host;
+			return ugly;
+		}
 		
 		public IActionResult Error( ) {
 			return View( /* new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier } */ );
@@ -30,6 +71,5 @@ namespace NgCore.Controllers {
 		
 	}
 }
-
 
 

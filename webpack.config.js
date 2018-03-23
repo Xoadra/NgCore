@@ -31,13 +31,13 @@ module.exports = {
 					'angular2-template-loader'
 				]
 			},
-			/* {
-				test: /\.html$/,
-				exclude: [
+			{
+				test: /\.(html|cshtml)$/,
+				include: [
 					path.resolve( __dirname, 'Views' ),
 				],
 				loader: 'html-loader'
-			}, */
+			},
 			{ test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file-loader?name=images/[name].bundle.[ext]' },
 			/* { test: /\.css$/, use: [ 'to-string-loader', 'style-loader', 'css-loader' ] }, */
 			{
