@@ -12,6 +12,12 @@ import '@angular/router'
 import 'rxjs'
 /* import 'systemjs' */
 
+/* import 'systemjs/dist/system.src' */
+
+
+/* import '../Angular/systemjs.config'
+import '../Angular/systemjs.loader' */
+
 import '../Angular/lib/jquery/dist/jquery'
 /* import '../Angular/lib/jquery-validation/dist/additional-methods' */
 /* import '../Angular/lib/jquery-validation/dist/additional-methods.min' */

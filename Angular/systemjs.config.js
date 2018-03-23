@@ -2,7 +2,7 @@
 
 
 
-//import { System } from 'systemjs'
+//import { SystemJS } from 'systemjs'
 
 
 
@@ -21,6 +21,8 @@
 		map: {
 			'app':
 				'app',
+			/* 'app':
+				'main.bundle.js', */
 			// Current Angular module partial route paths
 			/* '@angular/animations': 'npm:@angular/animations/', */
 			/* '@angular/animations/browser': 'npm:@angular/animations/', */
@@ -71,5 +73,11 @@
 		}
 	} )
 } )( this )
+
+
+
+/* SystemJS.import( 'main.bundle.js' )
+	.catch( function ( err ) { console.error( err ) } )
+	.then( function ( m ) { console.log( m ) } ) */
 
 

@@ -31,22 +31,15 @@ module.exports = {
 					'angular2-template-loader'
 				]
 			},
-			{
-				test: /\.(cshtml|html)$/,
-				include: [
-					path.resolve( __dirname, 'Views/Home' ),
-					path.resolve( __dirname, 'Views/Partial' ),
-					path.resolve( __dirname, 'Views/Shared' ),
+			/* {
+				test: /\.html$/,
+				exclude: [
+					path.resolve( __dirname, 'Views' ),
 				],
-				/* exclude: [
-					path.resolve( __dirname, 'Home' ),
-					path.resolve( __dirname, 'Partial' ),
-					path.resolve( __dirname, 'Shared' )
-				], */
 				loader: 'html-loader'
-			},
+			}, */
 			{ test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file-loader?name=images/[name].bundle.[ext]' },
-			/* { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }, */
+			/* { test: /\.css$/, use: [ 'to-string-loader', 'style-loader', 'css-loader' ] }, */
 			{
 				test: /\.css$/,
 				exclude: [ path.resolve( __dirname, 'app' ) ],
@@ -67,7 +60,11 @@ module.exports = {
 		new Extract( 'styles.bundle.css' ),
 		new Uglify( { sourceMap: true } ),
 		new Webpack.optimize.CommonsChunkPlugin( { name: [ 'main', 'vendor', 'polyfills' ] } ),
+		new Webpack.ContextReplacementPlugin( /\@angular(\\|\/)core(\\|\/)esm5/, path.join( __dirname, 'app' ) )
 	],
+	node: {
+		fs: 'empty'
+	},
 	output: {
 		filename: '[name].bundle.js',
 		chunkFilename: '[id].chunk.js',
@@ -75,5 +72,6 @@ module.exports = {
 		publicPath: '/'
 	},
 }
+
 
 
