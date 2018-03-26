@@ -4,13 +4,7 @@
 
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.NodeServices;
-using Microsoft.AspNetCore.SpaServices.Prerendering;
-using Microsoft.Extensions.DependencyInjection;
-using NgCore.Models;
+using NgCore.Pre;
 
 
 
@@ -22,7 +16,26 @@ namespace NgCore.Controllers {
 			return View( );
 		} */
 		
+		[ HttpGet ]
 		public async Task<IActionResult> Index( ) {
+			// Setup server-side app prerendering
+			var pre = await Request.Prerender( );
+			ViewData[ "SpaHtml" ] = pre.Html;
+			ViewData[ "Title" ] = pre.Globals[ "title" ];
+			ViewData[ "Styles" ] = pre.Globals[ "styles" ];
+			ViewData[ "Scripts" ] = pre.Globals[ "scripts" ];
+			ViewData[ "Meta" ] = pre.Globals[ "meta" ];
+			ViewData[ "Links" ] = pre.Globals[ "links" ];
+			ViewData[ "TransferData" ] = pre.Globals[ "transferData" ];
+			return View( );
+		}
+		
+		[ HttpGet ]
+		public IActionResult Error( ) {
+			return View( /* new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier } */ );
+		}
+		
+		/* public async Task<IActionResult> Index( ) {
 			// Grab key website data that will be serialized
 			var node = Request.HttpContext.RequestServices.GetRequiredService<INodeServices>( );
 			var zone = Request.HttpContext.RequestServices.GetRequiredService<IHostingEnvironment>( );
@@ -63,13 +76,10 @@ namespace NgCore.Controllers {
 			ugly.headers = data.Headers;
 			ugly.host = data.Host;
 			return ugly;
-		}
-		
-		public IActionResult Error( ) {
-			return View( /* new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier } */ );
-		}
+		} */
 		
 	}
 }
+
 
 
