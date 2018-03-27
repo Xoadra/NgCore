@@ -6,8 +6,9 @@ using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.Configuration;
+/* using Microsoft.AspNetCore.SpaServices.Webpack; */
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 
 
@@ -48,7 +49,13 @@ namespace NgCore {
 		
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure( IApplicationBuilder app, IHostingEnvironment env ) {
-			if ( env.IsDevelopment( ) ) { app.UseDeveloperExceptionPage( ); }
+			if ( env.IsDevelopment( ) ) {
+				app.UseDeveloperExceptionPage( );
+				// Webpack middleware settings for testing purposes
+				/* app.UseWebpackDevMiddleware( new WebpackDevMiddlewareOptions {
+					ConfigFile = "webpack.defconfig.js"
+				} ); */
+			}
 			else { app.UseExceptionHandler( "/Home/Error" ); }
 			app.UseDefaultFiles( );
 			app.UseStaticFiles( );
@@ -64,6 +71,5 @@ namespace NgCore {
 		
 	}
 }
-
 
 
