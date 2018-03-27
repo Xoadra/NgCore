@@ -3,6 +3,7 @@
 
 
 import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { ServerModule } from '@angular/platform-server'
 // Import the follwing to enable lazy loading with server-side rendering
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component'
 
 @NgModule( {
 	imports: [
+		BrowserModule,
 		CommonModule,
 		AppModule,
 		ServerModule,

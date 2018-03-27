@@ -48,7 +48,7 @@ namespace NgCore.Pre {
 				kill,
 				// This will be the eventual location of the server-side distribution folder
 				// Doesn't currently work with currently implemented file bundling setup
-				new JavaScriptModuleExport( root + "/Root/main.bundle.js" ),
+				new JavaScriptModuleExport( root + "/Root/server.bundle.js" ),
 				/* new JavaScriptModuleExport( root + "/Root/Angular" ), */
 				url,
 				query,
