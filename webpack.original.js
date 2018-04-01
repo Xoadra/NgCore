@@ -27,10 +27,7 @@ module.exports = ( env ) => {
 				{
 					test: /\.ts$/,
 					include: /ClientApp/,
-					use: isDevBuild ? [
-						'awesome-typescript-loader?silent=true',
-						'angular2-template-loader'
-					] : '@ngtools/webpack'
+					use: isDevBuild ? [ 'awesome-typescript-loader?silent=true', 'angular2-template-loader' ] : '@ngtools/webpack'
 				},
 				{
 					test: /\.html$/,
@@ -38,9 +35,7 @@ module.exports = ( env ) => {
 				},
 				{
 					test: /\.css$/,
-					use: [
-						'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'
-					]
+					use: [ 'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ]
 				},
 				{
 					test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -99,10 +94,7 @@ module.exports = ( env ) => {
 				exclude: [ './**/*.browser.ts' ]
 			} )
 		] ),
-		output: {
-			libraryTarget: 'commonjs',
-			path: path.join( __dirname, './ClientApp/dist' )
-		},
+		output: { libraryTarget: 'commonjs', path: path.join( __dirname, './ClientApp/dist' ) },
 		target: 'node',
 		devtool: 'inline-source-map'
 	} )

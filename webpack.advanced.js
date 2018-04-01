@@ -83,18 +83,13 @@ module.exports = ( env ) => {
 			new webpack.optimize.UglifyJsPlugin( { output: { ascii_only: true, } } ),
 		] ),
 		devtool: isDevBuild ? 'cheap-eval-source-map' : false,
-		node: {
-			fs: "empty"
-		}
+		node: { fs: 'empty' }
 	} )
 	
 	// Configuration for server-side prerendering bundle suitable for running in Node
 	const serverBundleConfig = merge( sharedConfig, {
 		// resolve: { mainFields: ['main'] },
-		entry: {
-			'main-server':
-				isDevBuild ? './ClientApp/boot.server.ts' : './ClientApp/boot.server.PRODUCTION.ts'
-		},
+		entry: { 'main-server': isDevBuild ? './ClientApp/boot.server.ts' : './ClientApp/boot.server.PRODUCTION.ts' },
 		plugins: [
 			new webpack.DllReferencePlugin( {
 				context: __dirname,
@@ -117,10 +112,7 @@ module.exports = ( env ) => {
 				exclude: [ './**/*.browser.ts' ]
 			} )
 		] ),
-		output: {
-			libraryTarget: 'commonjs',
-			path: path.join( __dirname, './ClientApp/dist' )
-		},
+		output: { libraryTarget: 'commonjs', path: path.join( __dirname, './ClientApp/dist' ) },
 		target: 'node',
 		// switch to "inline-source-map" if you want to debug the TS during SSR
 		devtool: isDevBuild ? 'cheap-eval-source-map' : false

@@ -25,13 +25,15 @@ module.exports = {
 		]
 	},
 	plugins: [
-		
+		// Supposedly does asynchronous error reporting, presumably while bundling
+		new CheckerPlugin( ),
+		// Fixes critical dependencies warnings when compiling Angular vendor code
+		new webpack.ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join( __dirname, 'app' ), {  } ),
+		new webpack.ContextReplacementPlugin( /(.+)?express(\\|\/)(.+)?/, path.join( __dirname, 'app' ), {  } )
 	],
 	devtool: 'cheap-eval-source-map',
 	// Enables code designed for running in Node to operate in non-Node environments
-	node: {
-		fs: 'empty'
-	},
+	node: { fs: 'empty' },
 	output: {
 		// Not sure what this configuration does, but will investigate it soon
 		/* libraryTarget: 'commonjs', */
