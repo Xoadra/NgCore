@@ -2,7 +2,10 @@
 
 
 
-// Advanced Webpack options for server-side prerendering and up-to-date settings 
+// Advanced Webpack options for server-side prerendering and up-to-date settings
+
+
+
 const path = require( 'path' )
 const webpack = require( 'webpack' )
 const merge = require( 'webpack-merge' )
@@ -119,5 +122,6 @@ module.exports = ( env ) => {
 	} )
 	return [ clientBundleConfig, serverBundleConfig ]
 }
+
 
 

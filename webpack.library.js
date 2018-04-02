@@ -2,6 +2,10 @@
 
 
 
+// Combined vendor parameters for bundling sourced from both example starter app kits
+
+
+
 const path = require( 'path' )
 const webpack = require( 'webpack' )
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
