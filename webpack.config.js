@@ -54,7 +54,7 @@ module.exports = ( env ) => {
 			]
 		},
 		// CheckerPlugin supposedly does async error reporting, presumably while bundling
-		plugins: [ new CheckerPlugin( ), ],
+		plugins: [ new CheckerPlugin( ) ],
 		output: { filename: '[name].bundle.js', publicPath: 'build/' }
 	}
 	
@@ -118,6 +118,7 @@ module.exports = ( env ) => {
 			new AngularCompilerPlugin( {
 				mainPath: path.join( __dirname, 'Angular/server.ts' ),
 				tsConfigPath: './tsconfig.json',
+				// Questionable outcome with this module without an existing browser-specific one
 				entryModule: path.join( __dirname, 'Angular/app/dotnet.module#DotNetModule' ),
 				exclude: [ './**/app.module.ts' ]
 			} )
@@ -131,5 +132,6 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
+
 
 
