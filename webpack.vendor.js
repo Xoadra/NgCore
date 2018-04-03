@@ -19,6 +19,31 @@ module.exports = ( env ) => {
 	
 	// Environment identity, setting it to the returned boolean based upon the set environment
 	const develop = !( env && env.prod )
+	// Temporarily placed vendor code library lists for testing entry points using the DllPlugin
+	const nodeModules = [
+		'@angular/animations',
+		'@angular/common',
+		'@angular/compiler',
+		'@angular/core',
+		'@angular/forms',
+		'@angular/http',
+		'@angular/platform-browser',
+		'@angular/platform-browser-dynamic',
+		'@angular/router',
+		'rxjs'
+	]
+	const totalPolyfills = [
+		'core-js/es6/reflect',
+		'core-js/es7/reflect',
+		'zone.js/dist/zone',
+		'event-source-polyfill'
+	]
+	const localLibraries = [
+		'./Angular/lib/jquery/dist/jquery',
+		'./Angular/lib/jquery-validation/dist/jquery.validate',
+		'./Angular/lib/bootstrap/dist/js/bootstrap',
+		'./Angular/js/site'
+	]
 	
 	
 	// Universal config for all vendor code bundles used for browser and server rendering
@@ -46,7 +71,9 @@ module.exports = ( env ) => {
 	
 	// Frontend config that generates bundles that are rendered after the initial page loads
 	const view = amal( meta, {
-		entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' },
+		/* entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' }, */
+		/* entry: { vendor: develop ? getAllVendors( ) : undefined, polyfills: getTotalPolyfills( ) }, */
+		entry: { vendor: develop ? nodeModules.concat( localLibraries ) : undefined, polyfills: totalPolyfills },
 		module: {
 			rules: [
 				{ test: /\.css(\?|$)/, use: ExtractTextPlugin.extract( { use: develop ? 'css-loader' : 'css-loader?minimize' } ) }
@@ -61,7 +88,8 @@ module.exports = ( env ) => {
 			} )
 		// Development-specific plugins for configuring and building the final bundled output
 		// Production-specific plugins for configuring and building the final bundled output
-		].concat( develop ? [ ] : [ new webpack.optimize.UglifyJsPlugin( ) ] )
+		].concat( develop ? [ ] : [ new webpack.optimize.UglifyJsPlugin( ) ] ),
+		output: { path: path.join( __dirname, 'Root', 'build' ) }
 	} )
 	
 	
@@ -71,7 +99,9 @@ module.exports = ( env ) => {
 		target: 'node',
 		// Search for information on the resolve option's mainFields attribute functionality
 		resolve: { mainFields: [ 'main' ] },
-		entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' },
+		/* entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' }, */
+		/* entry: { vendor: getAllVendors( ).concat( [ 'aspnet-prerendering' ] ), polyfills: getTotalPolyfills( ) }, */
+		entry: { vendor: nodeModules.concat( localLibraries ).concat( [ 'aspnet-prerendering' ] ), polyfills: totalPolyfills },
 		module: {
 			rules: [
 				{ test: /\.css(\?|$)/, use: [ 'to-string-loader', develop ? 'css-loader' : 'css-loader?minimize' ] }
@@ -85,7 +115,8 @@ module.exports = ( env ) => {
 			} )
 		// Development-specific plugins for configuring and building the final bundled output
 		// Production-specific plugins for configuring and building the final bundled output
-		].concat( develop ? [ ] : [ new webpack.optimize.UglifyJsPlugin( ) ] )
+		].concat( develop ? [ ] : [ new webpack.optimize.UglifyJsPlugin( ) ] ),
+		output: { path: path.join( __dirname, 'Angular', 'build' ), libraryTarget: 'commonjs2' }
 	} )
 	
 	
@@ -93,5 +124,6 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
+
 
 

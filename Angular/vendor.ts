@@ -61,3 +61,47 @@ import '/lib/bootstrap/dist/js/bootstrap.min.js'
 import '/js/site.min.js' */
 
 
+
+function getNodeModules( ) {
+	const nodeModules: string[ ] = [
+		'@angular/animations',
+		'@angular/common',
+		'@angular/compiler',
+		'@angular/core',
+		'@angular/forms',
+		'@angular/http',
+		'@angular/platform-browser',
+		'@angular/platform-browser-dynamic',
+		'@angular/router',
+		'rxjs',
+		/* 'aspnet-prerendering' */
+	]
+	return nodeModules
+}
+
+function getTotalPolyfills( ) {
+	const totalPolyfills: string[ ] = [
+		'core-js/es6/reflect',
+		'core-js/es7/reflect',
+		'zone.js/dist/zone',
+		'event-source-polyfill'
+	]
+	return totalPolyfills
+}
+
+function getLocalLibraries( ) {
+	const localLibraries: string[ ] = [
+		'../Angular/lib/jquery/dist/jquery',
+		'../Angular/lib/jquery-validation/dist/jquery.validate',
+		'../Angular/lib/bootstrap/dist/js/bootstrap',
+		'../Angular/js/site'
+	]
+	return localLibraries
+}
+
+function getAllVendors( ) {
+	return getNodeModules( ).concat( getLocalLibraries( ) )
+}
+
+
+
