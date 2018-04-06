@@ -40,10 +40,10 @@ module.exports = ( env ) => {
 				},
 				{
 					test: /\.(html|cshtml)$/,
-					/* include: [
+					include: [
 						path.resolve( __dirname, 'Views' ),
 						path.resolve( __dirname, 'Angular' ),
-					], */
+					],
 					use: 'html-loader?minimize=false'
 				},
 				{ test: /\.css$/, use: [ 'to-string-loader', develop ? 'css-loader' : 'css-loader?minimize' ] },
@@ -104,7 +104,7 @@ module.exports = ( env ) => {
 				context: __dirname,
 				manifest: require( './Angular/build/vendor.bundle.json' ),
 				sourceType: 'commonjs2',
-				name: './vendor'
+				name: './vendor.bundle'
 			} )
 		// Development-specific plugins for configuring and building the final bundled output
 		].concat( develop ? [

@@ -41,15 +41,13 @@ namespace NgCore.Pre {
 			// Requires a cancellation token for performing universal app prerendering
 			System.Threading.CancellationTokenSource ban = new System.Threading.CancellationTokenSource( );
 			System.Threading.CancellationToken kill = ban.Token;
-			// Serialize and prerender the frontend app as a universal/isomoprphic one
+			// Serialize and prerender the frontend app as a universal/isomorphic one
 			return await Prerenderer.RenderToString(
 				"/",
 				node,
 				kill,
-				// This will be the eventual location of the server-side distribution folder
-				// Doesn't currently work with currently implemented file bundling setup
-				new JavaScriptModuleExport( root + "/Root/server.bundle.js" ),
-				/* new JavaScriptModuleExport( root + "/Root/Angular" ), */
+				// Locate the generated server-side bundle used for initial prerendering
+				new JavaScriptModuleExport( root + "/Angular/build/server.bundle.js" ),
 				url,
 				query,
 				// Customized data sent to the frontend is sent through here as a param
