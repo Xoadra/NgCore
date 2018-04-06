@@ -3,8 +3,8 @@
 
 
 import { NgModule } from '@angular/core'
+// May not need BrowserModule here, but will stay for testing purposes
 import { BrowserModule } from '@angular/platform-browser'
-import { CommonModule } from '@angular/common'
 import { ServerModule } from '@angular/platform-server'
 // Import the follwing to enable lazy loading with server-side rendering
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader'
@@ -16,18 +16,14 @@ import { AppComponent } from './app.component'
 
 @NgModule( {
 	imports: [
-		BrowserModule,
-		CommonModule,
 		AppModule,
 		ServerModule,
 		ModuleMapLoaderModule
 	],
-	declarations: [ ],
 	bootstrap: [ AppComponent ]
 } )
 
 
-export class DotNetModule {  }
-
+export class BackModule {  }
 
 

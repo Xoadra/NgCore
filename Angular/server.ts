@@ -4,7 +4,7 @@
 
 import { enableProdMode } from '@angular/core'
 import { createServerRenderer } from 'aspnet-prerendering'
-import { DotNetModule } from './app/dotnet.module'
+import { BackModule } from './app/app.server'
 // Allows server-side rendering of Angular content
 import { ngAspnetCoreEngine, IEngineOptions, createTransferScript } from '@nguniversal/aspnetcore-engine'
 
@@ -20,7 +20,7 @@ enableProdMode( )
 export default createServerRenderer( core => {
 	const ops: IEngineOptions = {
 		appSelector: '<app-root></app-root>',
-		ngModule: DotNetModule,
+		ngModule: BackModule,
 		request: core,
 		providers: [ ]
 	}
@@ -36,6 +36,6 @@ export default createServerRenderer( core => {
 } )
 
 
-/* export { DotNetModule } from './app/dotnet.module' */
+/* export { BackModule } from './app/app.server' */
 
 

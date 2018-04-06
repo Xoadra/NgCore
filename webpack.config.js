@@ -63,7 +63,7 @@ module.exports = ( env ) => {
 	const view = amal( meta, {
 		// Allows code designed for running in Node to operate in non-Node environments
 		node: { fs: 'empty' },
-		entry: { main: './Angular/main.ts' },
+		entry: { browser: './Angular/browser.ts' },
 		plugins: [
 			// Name the vendor manifest json file and look up the remaining unknown settings
 			new webpack.DllReferencePlugin( {
@@ -81,11 +81,11 @@ module.exports = ( env ) => {
 		] : [
 			// Verify the functionality of the UglifyJsPlugin and AngularCompilerPlugin settings
 			new AngularCompilerPlugin( {
-				mainPath: path.join( __dirname, 'Angular/main.ts' ),
+				mainPath: path.join( __dirname, 'Angular/browser.ts' ),
 				tsConfigPath: './tsconfig.json',
 				// Tentatively using the main app module to see if browser-specific one is needed
-				entryModule: path.join( __dirname, 'Angular/app/app.module#AppModule' ),
-				exclude: [ './**/dotnet.module.ts' ]
+				entryModule: path.join( __dirname, 'Angular/app/app.browser#FrontModule' ),
+				exclude: [ './**/*.server.ts' ]
 			} ),
 			new webpack.optimize.UglifyJsPlugin( { output: { ascii_only: true, } } ),
 		] ),
@@ -119,8 +119,8 @@ module.exports = ( env ) => {
 				mainPath: path.join( __dirname, 'Angular/server.ts' ),
 				tsConfigPath: './tsconfig.json',
 				// Questionable outcome with this module without an existing browser-specific one
-				entryModule: path.join( __dirname, 'Angular/app/dotnet.module#DotNetModule' ),
-				exclude: [ './**/app.module.ts' ]
+				entryModule: path.join( __dirname, 'Angular/app/app.server#BackModule' ),
+				exclude: [ './**/*.browser.ts' ]
 			} )
 		] ),
 		// LibraryTarget setting is unknown and necessitates further investigation into its use

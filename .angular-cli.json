@@ -19,7 +19,7 @@
 				"lib"
 			],
 			"index": "index.html",
-			"main": "main.ts",
+			"main": "browser.ts",
 			"polyfills": "polyfills.ts",
 			"test": "test.ts",
 			"tsconfig": "tsconfig.app.json",
