@@ -40,11 +40,12 @@ module.exports = ( env ) => {
 				},
 				{
 					test: /\.(html|cshtml)$/,
-					include: [
+					/* exclude: [
 						path.resolve( __dirname, 'Views' ),
 						path.resolve( __dirname, 'Angular' ),
-					],
+					], */
 					use: 'html-loader?minimize=false'
+					/* use: 'raw-loader?minimize=false' */
 				},
 				{ test: /\.css$/, use: [ 'to-string-loader', develop ? 'css-loader' : 'css-loader?minimize' ] },
 				/* {
@@ -132,6 +133,5 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
-
 
 

@@ -14,10 +14,10 @@ import { ContactComponent } from './contact/contact.component'
 
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	/* { path: '', redirectTo: 'home', pathMatch: 'full' },
 	{ path: 'home', component: IndexComponent, data: { title: 'Home' } },
 	{ path: 'about', component: AboutComponent, data: { title: 'About' } },
-	{ path: 'contact', component: ContactComponent, data: { title: 'Contact' } }
+	{ path: 'contact', component: ContactComponent, data: { title: 'Contact' } } */
 ]
 
 

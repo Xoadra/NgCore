@@ -3,7 +3,7 @@
 
 
 import { Component } from '@angular/core'
-import { Title } from '@angular/platform-browser'
+import { Meta, Title } from '@angular/platform-browser'
 
 
 
@@ -22,12 +22,12 @@ export class AppComponent {
 	title: string = 'app'
 	
 	
-	constructor( private _title: Title ) {  }
+	constructor( /* private _meta: Meta, private _title: Title */ ) {  }
 	
 	
-	setTitle( title: string ) {
+	/* setTitle( title: string ) {
 		this._title.setTitle( title )
-	}
+	} */
 	
 }
 

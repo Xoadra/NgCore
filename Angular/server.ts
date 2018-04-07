@@ -9,6 +9,8 @@ import { BackModule } from './app/app.server'
 import { ngAspnetCoreEngine, IEngineOptions, createTransferScript } from '@nguniversal/aspnetcore-engine'
 
 // Polyfills, but not yet sure why it is necessary here
+import './polyfills.ts'
+import 'zone.js/dist/zone-node'
 import 'zone.js'
 
 

@@ -74,6 +74,7 @@ module.exports = ( env ) => {
 		/* entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' }, */
 		/* entry: { vendor: develop ? getAllVendors( ) : undefined, polyfills: getTotalPolyfills( ) }, */
 		entry: { vendor: develop ? nodeModules.concat( localLibraries ) : undefined, polyfills: totalPolyfills },
+		/* entry: { vendor: develop ? nodeModules.concat( localLibraries ) : totalPolyfills }, */
 		module: {
 			rules: [
 				{ test: /\.css(\?|$)/, use: ExtractTextPlugin.extract( { use: develop ? 'css-loader' : 'css-loader?minimize' } ) }
@@ -102,6 +103,9 @@ module.exports = ( env ) => {
 		/* entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' }, */
 		/* entry: { vendor: getAllVendors( ).concat( [ 'aspnet-prerendering' ] ), polyfills: getTotalPolyfills( ) }, */
 		entry: { vendor: nodeModules.concat( localLibraries ).concat( [ 'aspnet-prerendering' ] ), polyfills: totalPolyfills },
+		/*
+			entry: { vendor: nodeModules.concat( localLibraries ).concat( totalPolyfills ).concat( [ 'aspnet-prerendering' ] ) },
+		*/
 		module: {
 			rules: [
 				{ test: /\.css(\?|$)/, use: [ 'to-string-loader', develop ? 'css-loader' : 'css-loader?minimize' ] }
