@@ -64,14 +64,18 @@ namespace NgCore {
 				RequestPath = "/node_modules"
 			} );
 			app.UseMvc( routes => {
-				/* routes.MapRoute( name: "default", template: "{controller=Home}/{action=Index}/{id?}" ); */
-				routes.MapRoute( name: "default", template: "{controller}/{action}/{id?}" );
+				routes.MapRoute( name: "default", template: "{controller=Home}/{action=Index}/{id?}" );
+				/* routes.MapRoute( name: "view", template: "{controller}/{action}.cshtml" ); */
 				routes.MapSpaFallbackRoute( "spa-fallback", new { controller = "home", action = "index" } );
+				/* routes.MapSpaFallbackRoute( "spa", new { controller = "home", action = "index" } );
+				routes.MapSpaFallbackRoute( "app", new { controller = "partial", action = "appcomponent" } );
+				routes.MapSpaFallbackRoute( "index", new { controller = "partial", action = "indexcomponent" } );
+				routes.MapSpaFallbackRoute( "about", new { controller = "partial", action = "aboutcomponent" } );
+				routes.MapSpaFallbackRoute( "contact", new { controller = "partial", action = "contactcomponent" } ); */
 			} );
 		}
 		
 	}
 }
-
 
 

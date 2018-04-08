@@ -17,13 +17,13 @@ const CheckerPlugin = require( 'awesome-typescript-loader' ).CheckerPlugin
 // Module exports converted from object to arrow function to use environment variables
 module.exports = ( env ) => {
 	
-	// Environment identity, setting it to the returned boolean based upon the set environment
+	// Environment identity set to a returned boolean based on the configured environment
 	const develop = !( env && env.prod )
 	
 	
 	// Universal config for all source code bundles used for browser and server rendering
 	const meta = {
-		// Options for what build information is displayed in the terminal while bundling files
+		// Terminal output settings for displaying build information while files are bundled
 		stats: { modules: false },
 		// Webpack's absolute route where it looks for any config entry points and loaders
 		context: __dirname,
@@ -39,7 +39,8 @@ module.exports = ( env ) => {
 					] : '@ngtools/webpack'
 				},
 				{
-					test: /\.(html|cshtml)$/,
+					/* test: /\.(html|cshtml)$/, */
+					test: /\.html$/,
 					/* exclude: [
 						path.resolve( __dirname, 'Views' ),
 						path.resolve( __dirname, 'Angular' ),
@@ -56,6 +57,8 @@ module.exports = ( env ) => {
 		},
 		// CheckerPlugin supposedly does async error reporting, presumably while bundling
 		plugins: [ new CheckerPlugin( ) ],
+		// Omits selected assets or dependencies from inclusion in any final bundled output
+		externals: /\.cshtml$/,
 		output: { filename: '[name].bundle.js', publicPath: 'build/' }
 	}
 	
@@ -84,7 +87,6 @@ module.exports = ( env ) => {
 			new AngularCompilerPlugin( {
 				mainPath: path.join( __dirname, 'Angular/browser.ts' ),
 				tsConfigPath: './tsconfig.json',
-				// Tentatively using the main app module to see if browser-specific one is needed
 				entryModule: path.join( __dirname, 'Angular/app/app.browser#FrontModule' ),
 				exclude: [ './**/*.server.ts' ]
 			} ),
@@ -119,7 +121,6 @@ module.exports = ( env ) => {
 			new AngularCompilerPlugin( {
 				mainPath: path.join( __dirname, 'Angular/server.ts' ),
 				tsConfigPath: './tsconfig.json',
-				// Questionable outcome with this module without an existing browser-specific one
 				entryModule: path.join( __dirname, 'Angular/app/app.server#BackModule' ),
 				exclude: [ './**/*.browser.ts' ]
 			} )
@@ -133,5 +134,6 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
+
 
 
