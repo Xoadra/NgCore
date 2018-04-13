@@ -26,8 +26,10 @@
 		]
 	},
 	"exclude": [
+		"Other",
 		"node_modules"
 	]
 }
+
 
 

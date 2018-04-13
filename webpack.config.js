@@ -72,7 +72,7 @@ module.exports = ( env ) => {
 	const view = amal( meta, {
 		// Allows code designed for running in Node to operate in non-Node environments
 		node: { fs: 'empty' },
-		entry: { browser: './Angular/browser.ts' },
+		entry: { browser: './Angular/boot.browser.ts' },
 		devtool: develop ? 'cheap-eval-source-map' : false,
 		plugins: [
 			// Name the vendor manifest json file and look up the remaining unknown settings
@@ -96,7 +96,7 @@ module.exports = ( env ) => {
 		] : [
 			// Verify the functionality of the UglifyJsPlugin and AngularCompilerPlugin settings
 			new AngularCompilerPlugin( {
-				mainPath: path.join( __dirname, 'Angular/browser.ts' ),
+				mainPath: path.join( __dirname, 'Angular/boot.browser.ts' ),
 				tsConfigPath: './tsconfig.json',
 				entryModule: path.join( __dirname, 'Angular/app/app.browser#FrontModule' ),
 				exclude: [ './**/*.server.ts' ]
@@ -111,7 +111,7 @@ module.exports = ( env ) => {
 	const rear = amal( meta, {
 		// Identifies the environment the bundles run in, such as in the browser or via Node
 		target: 'node',
-		entry: { server: develop ? './Angular/server.ts' : './Angular/production.ts' },
+		entry: { server: develop ? './Angular/boot.server.ts' : './Angular/boot.production.ts' },
 		devtool: develop ? 'inline-source-map' : false,
 		plugins: [
 			// Name the vendor manifest json file and look up the remaining unknown settings
@@ -138,7 +138,7 @@ module.exports = ( env ) => {
 			// Verify the functionality of the UglifyJsPlugin and AngularCompilerPlugin settings
 			new webpack.optimize.UglifyJsPlugin( { mangle: false, compress: false, output: { ascii_only: true, } } ),
 			new AngularCompilerPlugin( {
-				mainPath: path.join( __dirname, 'Angular/production.ts' ),
+				mainPath: path.join( __dirname, 'Angular/boot.production.ts' ),
 				tsConfigPath: './tsconfig.json',
 				entryModule: path.join( __dirname, 'Angular/app/app.server#BackModule' ),
 				exclude: [ './**/*.browser.ts' ]

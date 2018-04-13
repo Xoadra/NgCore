@@ -15,10 +15,10 @@ import 'reflect-metadata'
 
 
 
-/* enableProdMode( ) */
+enableProdMode( )
 
 
-if ( environment.production ) { enableProdMode( ) }
+/* if ( environment.production ) { enableProdMode( ) } */
 
 /* platformBrowserDynamic( ).bootstrapModule( FrontModule )
 	.then( ( success: any ) => console.log( 'It\'s aliiiive!!!' ) )
