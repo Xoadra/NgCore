@@ -4,13 +4,18 @@
 
 import { enableProdMode } from '@angular/core'
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
-import { FrontModule } from './app/app.browser'
 import { environment } from './environments/environment'
+
+import { FrontModule } from './app/app.browser'
 
 // Polyfills, but not yet sure why it is necessary here
 import './polyfills.ts'
 import 'zone.js/dist/zone'
+import 'reflect-metadata'
 
+
+
+/* enableProdMode( ) */
 
 
 if ( environment.production ) { enableProdMode( ) }
@@ -20,6 +25,7 @@ if ( environment.production ) { enableProdMode( ) }
 	.catch( ( err: any ) => console.error( err ) ) */
 
 
-const module = platformBrowserDynamic( ).bootstrapModule( FrontModule )
+/* const module = platformBrowserDynamic( ).bootstrapModule( FrontModule ) */
+platformBrowserDynamic( ).bootstrapModule( FrontModule )
 
 

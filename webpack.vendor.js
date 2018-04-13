@@ -30,19 +30,21 @@ module.exports = ( env ) => {
 		'@angular/platform-browser',
 		'@angular/platform-browser-dynamic',
 		'@angular/router',
-		'rxjs'
+		'zone.js'
+		/* 'rxjs' */
 	]
 	const totalPolyfills = [
-		'core-js/es6/reflect',
+		/* 'core-js/es6/reflect',
 		'core-js/es7/reflect',
-		'zone.js/dist/zone',
+		'zone.js/dist/zone', */
+		'core-js',
 		'event-source-polyfill'
 	]
 	const localLibraries = [
-		'./Angular/lib/jquery/dist/jquery',
+		/* './Angular/lib/jquery/dist/jquery',
 		'./Angular/lib/jquery-validation/dist/jquery.validate',
 		'./Angular/lib/bootstrap/dist/js/bootstrap',
-		'./Angular/js/site'
+		'./Angular/js/site' */
 	]
 	
 	
@@ -50,7 +52,7 @@ module.exports = ( env ) => {
 	const meta = {
 		// Options for what build information is displayed in the terminal while bundling files
 		stats: { modules: false },
-		resolve: { extensions: [ '.ts', '.js' ] },
+		resolve: { extensions: [ '.js' ] },
 		module: {
 			rules: [
 				{ test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' }
@@ -59,8 +61,8 @@ module.exports = ( env ) => {
 		plugins: [
 			new CleanWebpackPlugin( [ 'Root/build', 'Angular/build' ] ),
 			// Helps fix critical dependencies warnings when compiling Angular vendor code
-			new webpack.ContextReplacementPlugin( /\@angular\b.*\b(bundles|linker)/, path.join( __dirname, 'app' ) ),
-			new webpack.ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join( __dirname, 'app' ) ),
+			new webpack.ContextReplacementPlugin( /\@angular\b.*\b(bundles|linker)/, path.join( __dirname, './Angular' ) ),
+			new webpack.ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join( __dirname, './Angular' ) ),
 			// Workaround using an unknown plugin for resolving a particular foreign issue 
 			new webpack.IgnorePlugin( /^vertx$/ )
 		],
@@ -73,7 +75,8 @@ module.exports = ( env ) => {
 	const view = amal( meta, {
 		/* entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' }, */
 		/* entry: { vendor: develop ? getAllVendors( ) : undefined, polyfills: getTotalPolyfills( ) }, */
-		entry: { vendor: develop ? nodeModules.concat( localLibraries ) : undefined, polyfills: totalPolyfills },
+		/* entry: { vendor: develop ? nodeModules.concat( localLibraries ) : undefined, polyfills: totalPolyfills }, */
+		entry: { vendor: develop ? nodeModules.concat( totalPolyfills ) : totalPolyfills },
 		/* entry: { vendor: develop ? nodeModules.concat( localLibraries ) : totalPolyfills }, */
 		module: {
 			rules: [
@@ -84,7 +87,7 @@ module.exports = ( env ) => {
 			new ExtractTextPlugin( 'vendor.bundle.css' ),
 			// Name the vendor manifest json file being generated and verify the name setting
 			new webpack.DllPlugin( {
-				path: path.join( __dirname, 'Root', 'build', '[name].bundle.json' ),
+				path: path.join( __dirname, 'Root', 'build', '[name].manifest.json' ),
 				name: '[name]_[hash]'
 			} )
 		// Development-specific plugins for configuring and building the final bundled output
@@ -102,7 +105,10 @@ module.exports = ( env ) => {
 		resolve: { mainFields: [ 'main' ] },
 		/* entry: { vendor: './Angular/vendor.ts', polyfills: './Angular/polyfills.ts' }, */
 		/* entry: { vendor: getAllVendors( ).concat( [ 'aspnet-prerendering' ] ), polyfills: getTotalPolyfills( ) }, */
-		entry: { vendor: nodeModules.concat( localLibraries ).concat( [ 'aspnet-prerendering' ] ), polyfills: totalPolyfills },
+		/*
+			entry: { vendor: nodeModules.concat( localLibraries ).concat( [ 'aspnet-prerendering' ] ), polyfills: totalPolyfills }
+		*/
+		entry: { vendor: nodeModules.concat( totalPolyfills ).concat( [ 'aspnet-prerendering' ] ) },
 		/*
 			entry: { vendor: nodeModules.concat( localLibraries ).concat( totalPolyfills ).concat( [ 'aspnet-prerendering' ] ) },
 		*/
@@ -114,7 +120,7 @@ module.exports = ( env ) => {
 		plugins: [
 			// Name the vendor manifest json file being generated and verify the name setting
 			new webpack.DllPlugin( {
-				path: path.join( __dirname, 'Angular', 'build', '[name].bundle.json' ),
+				path: path.join( __dirname, 'Angular', 'build', '[name].manifest.json' ),
 				name: '[name]_[hash]'
 			} )
 		// Development-specific plugins for configuring and building the final bundled output

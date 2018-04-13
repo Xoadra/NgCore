@@ -16,13 +16,13 @@ using NgCore.Models;
 namespace NgCore.Pre {
     public static class HttpPrerender {
 		
-		public static IRequest Data( this HttpRequest data ) {
+		public static IRequest Decode( this HttpRequest http ) {
 			// Unknown purpose as of yet, but the info here is required further below
-			IRequest ugly = new IRequest( );
-			ugly.cookies = data.Cookies;
-			ugly.headers = data.Headers;
-			ugly.host = data.Host;
-			return ugly;
+			IRequest code = new IRequest( );
+			code.cookies = http.Cookies;
+			code.headers = http.Headers;
+			code.host = http.Host;
+			return code;
 		}
 		
 		public static async Task<RenderToStringResult> Prerender( this HttpRequest data ) {
@@ -36,7 +36,7 @@ namespace NgCore.Pre {
 			// Allow for the passing of custom data as a request for the frontend app
 			TransferData trans = new TransferData( );
 			// Feel free to add more custom data here through TransferData class fields
-			trans.info = data.Data( );
+			trans.info = data.Decode( );
 			trans.thisCameFromDotNET = "I do it from behind... with C#!!!";
 			// Requires a cancellation token for performing universal app prerendering
 			System.Threading.CancellationTokenSource ban = new System.Threading.CancellationTokenSource( );
@@ -47,7 +47,7 @@ namespace NgCore.Pre {
 				node,
 				kill,
 				// Locate the generated server-side bundle used for initial prerendering
-				new JavaScriptModuleExport( root + "/Angular/build/server.bundle.js" ),
+				new JavaScriptModuleExport( root + "/Angular/build/server.bundle" ),
 				url,
 				query,
 				// Customized data sent to the frontend is sent through here as a param

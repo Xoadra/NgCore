@@ -3,9 +3,8 @@
 
 
 import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
-import { Routes, RouterModule } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 
 import { AboutComponent } from './about/about.component'
 import { IndexComponent } from './index/index.component'
@@ -28,7 +27,6 @@ const routes: Routes = [
 		ContactComponent
 	],
 	imports: [
-		BrowserModule,
 		CommonModule,
 		RouterModule.forRoot( routes )
 	],

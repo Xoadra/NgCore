@@ -3,8 +3,12 @@
 
 
 import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
+import { BrowserModule } from '@angular/platform-browser'
+// Unknown module presumably for some sort of caching, but will keep
+/* import { TransferHttpCacheModule } from '@nguniversal/common' */
+
+/* import { PrebootModule } from 'preboot' */
 
 import { RouteModule } from './app.routing'
 
@@ -17,9 +21,12 @@ import { AppComponent } from './app.component'
 		AppComponent
 	],
 	imports: [
-		BrowserModule.withServerTransition( { appId: 'app' } ),
+		RouteModule,
 		CommonModule,
-		RouteModule
+		BrowserModule.withServerTransition( { appId: 'app' } ),
+		// Keeping preboot settings commented out for potential later use
+		/* PrebootModule.withConfig( { appRoot: 'app-root' } ) */
+		/* TransferHttpCacheModule, */
 	],
 	providers: [ ],
 	bootstrap: [ AppComponent ]
@@ -27,5 +34,6 @@ import { AppComponent } from './app.component'
 
 
 export class AppModule {  }
+
 
 

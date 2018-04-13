@@ -31,9 +31,9 @@ import { AppComponent } from './app.component'
 
 
 @NgModule( {
-	declarations: [
+	/* declarations: [
 		AppComponent
-	],
+	], */
 	imports: [
 		CommonModule,
 		// make sure this matches with your Server NgModule

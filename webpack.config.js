@@ -28,15 +28,20 @@ module.exports = ( env ) => {
 		// Webpack's absolute route where it looks for any config entry points and loaders
 		context: __dirname,
 		resolve: { extensions: [ '.ts', '.js' ] },
-		devtool: develop ? 'cheap-eval-source-map' : false,
+		/* devtool: develop ? 'cheap-eval-source-map' : false, */
 		module: {
 			rules: [
-				{
+				/* {
 					test: /\.ts$/,
 					use: develop ? [
 						'awesome-typescript-loader?silent=true',
 						'angular2-template-loader', 'angular2-router-loader'
 					] : '@ngtools/webpack'
+				}, */
+				{
+					test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+					include: /Angular/,
+					use: develop ? [ 'awesome-typescript-loader?silent=true', 'angular2-template-loader' ] : '@ngtools/webpack'
 				},
 				{
 					/* test: /\.(html|cshtml)$/, */
@@ -68,18 +73,24 @@ module.exports = ( env ) => {
 		// Allows code designed for running in Node to operate in non-Node environments
 		node: { fs: 'empty' },
 		entry: { browser: './Angular/browser.ts' },
+		devtool: develop ? 'cheap-eval-source-map' : false,
 		plugins: [
 			// Name the vendor manifest json file and look up the remaining unknown settings
 			new webpack.DllReferencePlugin( {
 				context: __dirname,
-				manifest: require( './Root/build/vendor.bundle.json' )
-			} )
+				manifest: require( './Root/build/vendor.manifest.json' )
+			} ),
+			// Gathered polyfills for referencing from source code bundles, but isn't working yet
+			/* new webpack.DllReferencePlugin( {
+				context: __dirname,
+				manifest: require( './Root/build/polyfills.manifest.json' )
+			} ) */
 		// Development-specific plugins for configuring and building the final bundled output
 		].concat( develop ? [
 			// Just create inline source maps instead by removing the filename option below
 			new webpack.SourceMapDevToolPlugin( {
 				filename: '[file].map',
-				moduleFilenameTemplate: path.relative( 'Root/build', '[resourcePath]' ) 
+				moduleFilenameTemplate: path.relative( './Root/build', '[resourcePath]' ) 
 			} )
 		// Production-specific plugins for configuring and building the final bundled output
 		] : [
@@ -92,7 +103,7 @@ module.exports = ( env ) => {
 			} ),
 			new webpack.optimize.UglifyJsPlugin( { output: { ascii_only: true, } } ),
 		] ),
-		output: { path: path.join( __dirname, 'Root/build' ) }
+		output: { path: path.join( __dirname, './Root/build' ) }
 	} )
 	
 	
@@ -100,33 +111,41 @@ module.exports = ( env ) => {
 	const rear = amal( meta, {
 		// Identifies the environment the bundles run in, such as in the browser or via Node
 		target: 'node',
-		entry: { server: './Angular/server.ts' },
+		entry: { server: develop ? './Angular/server.ts' : './Angular/production.ts' },
+		devtool: develop ? 'inline-source-map' : false,
 		plugins: [
 			// Name the vendor manifest json file and look up the remaining unknown settings
 			new webpack.DllReferencePlugin( {
 				context: __dirname,
-				manifest: require( './Angular/build/vendor.bundle.json' ),
+				manifest: require( './Angular/build/vendor.manifest.json' ),
 				sourceType: 'commonjs2',
 				name: './vendor.bundle'
-			} )
+			} ),
+			// Gathered polyfills for referencing from source code bundles, but isn't working yet
+			/* new webpack.DllReferencePlugin( {
+				context: __dirname,
+				manifest: require( './Angular/build/polyfills.manifest.json' ),
+				sourceType: 'commonjs2',
+				name: './polyfills.bundle'
+			} ) */
 		// Development-specific plugins for configuring and building the final bundled output
 		].concat( develop ? [
 			// Helps fix critical dependencies warnings when compiling Angular vendor code
-			new webpack.ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join( __dirname, 'app' ), {  } ),
-			new webpack.ContextReplacementPlugin( /(.+)?express(\\|\/)(.+)?/, path.join( __dirname, 'app' ), {  } )
+			new webpack.ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join( __dirname, 'src' ), {  } ),
+			new webpack.ContextReplacementPlugin( /(.+)?express(\\|\/)(.+)?/, path.join( __dirname, 'src' ), {  } )
 		// Production-specific plugins for configuring and building the final bundled output
 		] : [
 			// Verify the functionality of the UglifyJsPlugin and AngularCompilerPlugin settings
 			new webpack.optimize.UglifyJsPlugin( { mangle: false, compress: false, output: { ascii_only: true, } } ),
 			new AngularCompilerPlugin( {
-				mainPath: path.join( __dirname, 'Angular/server.ts' ),
+				mainPath: path.join( __dirname, 'Angular/production.ts' ),
 				tsConfigPath: './tsconfig.json',
 				entryModule: path.join( __dirname, 'Angular/app/app.server#BackModule' ),
 				exclude: [ './**/*.browser.ts' ]
 			} )
 		] ),
 		// LibraryTarget setting is unknown and necessitates further investigation into its use
-		output: { path: path.join( __dirname, 'Angular/build' ), libraryTarget: 'commonjs' }
+		output: { path: path.join( __dirname, './Angular/build' ), libraryTarget: 'commonjs' }
 	} )
 	
 	
@@ -134,6 +153,5 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
-
 
 

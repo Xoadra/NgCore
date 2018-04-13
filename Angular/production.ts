@@ -7,7 +7,8 @@ import { createServerRenderer } from 'aspnet-prerendering'
 // Allows server-side rendering of Angular content
 import { ngAspnetCoreEngine, IEngineOptions, createTransferScript } from '@nguniversal/aspnetcore-engine'
 
-import { BackModule } from './app/app.server'
+// NgModule for using AoT compilation for production
+const { BackModuleNgFactory } = require( './app/app.server.ngfactory' )
 
 // Polyfills, but not yet sure why it is necessary here
 import './polyfills.ts'
@@ -24,20 +25,19 @@ enableProdMode( )
 export default createServerRenderer( core => {
 	const ops: IEngineOptions = {
 		appSelector: '<app-root></app-root>',
-		ngModule: BackModule,
+		ngModule: BackModuleNgFactory,
 		request: core,
 		providers: [ ]
 	}
 	return ngAspnetCoreEngine( ops ).then( trans => {
 		// Transfer data from the server to the frontend
 		trans.globals.transferData = createTransferScript( {
-			someData: 'Transfer this to the client on the window.TRANSFER_CACHE {  } object',
+			someData: 'Transfer this to the client on the window.TRANSFER_CACHE {} object',
 			// Data accessed from the backend server
 			fromDotnet: core.data.thisCameFromDotNET
 		} )
 		return ( { html: trans.html, globals: trans.globals } )
 	} )
 } )
-
 
 
