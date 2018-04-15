@@ -6,16 +6,16 @@
 	
 	<head>
 		
+		<!-- <base href="~/"> -->
+		<base href="@( Url.Content( "~/" ) )" />
+		<title> @ViewData[ "Title" ] </title>
+		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title> @ViewData[ "Title" ] </title>
-		<!-- <base href="@(Url.Content("~/"))" /> -->
-		<base href="~/">
 		
 		<!-- Head tags reapplied via server prerendered Razor syntax -->
 		@Html.Raw( ViewData[ "Meta" ] )
 		@Html.Raw( ViewData[ "Links" ] )
-		@Html.Raw( ViewData[ "Styles" ] )
 		
 		<!-- <environment include="Development"> -->
 			<!-- <link rel="stylesheet" href="~/node_modules/bootstrap/dist/css/bootstrap.css" /> -->
@@ -36,6 +36,8 @@
 		</environment> -->
 		
 		<!-- <link href="~/styles.bundle.css" rel="stylesheet"> -->
+		
+		@Html.Raw( ViewData[ "Styles" ] )
 		
 	</head>
 	

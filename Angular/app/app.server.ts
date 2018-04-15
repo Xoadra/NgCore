@@ -10,6 +10,7 @@ import { ServerModule } from '@angular/platform-server'
 import { AppModule } from './app.module'
 
 import { AppComponent } from './app.component'
+/* import { Platform } from './tools/prerender' */
 
 
 
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component'
 		ServerModule
 		/* ModuleMapLoaderModule */
 	],
+	providers: [ ],
 	bootstrap: [ AppComponent ]
 } )
 

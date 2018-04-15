@@ -4,7 +4,7 @@
 
 import { enableProdMode } from '@angular/core'
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
-import { environment } from './environments/environment'
+/* import { environment } from './environments/environment' */
 
 import { FrontModule } from './app/app.browser'
 
@@ -15,7 +15,19 @@ import 'reflect-metadata'
 
 
 
-enableProdMode( )
+// Start up hot module replacement or production mode
+/* if ( module[ 'hot' ] ) {
+	module[ 'hot' ].accept( )
+	module[ 'hot' ].dispose( ( ) => {
+		hotmod.then( mod => mod.destroy( ) )
+	} )
+}
+else {
+	enableProdMode( )
+} */
+
+
+/* enableProdMode( ) */
 
 
 /* if ( environment.production ) { enableProdMode( ) } */
@@ -25,7 +37,7 @@ enableProdMode( )
 	.catch( ( err: any ) => console.error( err ) ) */
 
 
-/* const module = platformBrowserDynamic( ).bootstrapModule( FrontModule ) */
+/* const hotmod = platformBrowserDynamic( ).bootstrapModule( FrontModule ) */
 platformBrowserDynamic( ).bootstrapModule( FrontModule )
 
 

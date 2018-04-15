@@ -12,6 +12,7 @@ const path = require( 'path' )
 
 const AngularCompilerPlugin = require( '@ngtools/webpack' ).AngularCompilerPlugin
 const CheckerPlugin = require( 'awesome-typescript-loader' ).CheckerPlugin
+const BundleAnalyzerPlugin = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin
 
 
 // Module exports converted from object to arrow function to use environment variables
@@ -153,5 +154,6 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
+
 
 

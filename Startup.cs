@@ -59,17 +59,18 @@ namespace NgCore {
 				app.UseDeveloperExceptionPage( );
 				// Webpack middleware settings for testing purposes
 				/* app.UseWebpackDevMiddleware( new WebpackDevMiddlewareOptions {
-					ConfigFile = "webpack.defconfig.js"
+					HotModuleReplacement = true,
+					HotModuleReplacementEndpoint = "/build/"
 				} ); */
 				/* app.UseWebpackDevMiddleware( ); */
 			}
 			else { app.UseExceptionHandler( "/Home/Error" ); }
-			app.UseDefaultFiles( );
+			/* app.UseDefaultFiles( ); */
 			app.UseStaticFiles( );
-			app.UseStaticFiles( new StaticFileOptions {
+			/* app.UseStaticFiles( new StaticFileOptions {
 				FileProvider = new PhysicalFileProvider( Path.Combine( env.ContentRootPath, "node_modules" ) ),
 				RequestPath = "/node_modules"
-			} );
+			} ); */
 			/* app.UseStaticFiles( new StaticFileOptions( ) {
 				OnPrepareResponse = c => {
 					// Do not add cache to json files. We need to have new versions when we add new translations.
@@ -90,7 +91,7 @@ namespace NgCore {
 			app.UseMvc( routes => {
 				routes.MapRoute( name: "default", template: "{controller=Home}/{action=Index}/{id?}" );
 				/* routes.MapRoute( name: "view", template: "{controller}/{action}.cshtml" ); */
-				routes.MapSpaFallbackRoute( "spa-fallback", new { controller = "home", action = "index" } );
+				routes.MapSpaFallbackRoute( "spa-fallback", new { controller = "Home", action = "Index" } );
 				/* routes.MapSpaFallbackRoute( "spa", new { controller = "home", action = "index" } );
 				routes.MapSpaFallbackRoute( "app", new { controller = "partial", action = "appcomponent" } );
 				routes.MapSpaFallbackRoute( "index", new { controller = "partial", action = "indexcomponent" } );
@@ -101,5 +102,6 @@ namespace NgCore {
 		
 	}
 }
+
 
 

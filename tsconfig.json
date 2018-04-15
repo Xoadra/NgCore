@@ -5,6 +5,8 @@
 {
 	"compileOnSave": true,
 	"compilerOptions": {
+		"allowUnreachableCode": false,
+		"alwaysStrict": true,
 		"declaration": false,
 		"diagnostics": true,
 		"emitDecoratorMetadata": true,
@@ -15,21 +17,27 @@
 		],
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"outDir": "Root",
+		"noImplicitAny": false,
 		"removeComments": false,
-		"rootDir": "Angular",
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true,
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"target": "es5",
 		"typeRoots": [
 			"node_modules/@types"
+		],
+		"types": [
+			"node"
 		]
 	},
+	"include": [
+		"Angular"
+	],
 	"exclude": [
 		"Other",
-		"node_modules"
+		"**/*.spec.ts"
 	]
 }
-
 
 

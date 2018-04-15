@@ -2,10 +2,13 @@
 
 
 
-import { InjectionToken } from '@angular/core'
+/* import { InjectionToken, PLATFORM_ID } from '@angular/core'
 
 import { ORIGIN_URL, REQUEST } from '@nguniversal/aspnetcore-engine/tokens'
 
+
+
+export const Platform = PLATFORM_ID
 
 
 export function Url( ) {
@@ -17,7 +20,7 @@ export function Url( ) {
 export function Origin( ) {
 	const origin: string = window.location.origin
 	console.log( origin )
-	/* console.log( getDOM( ).getLocation( ).origin ) */
+	console.log( getDOM( ).getLocation( ).origin )
 	return origin
 }
 
@@ -30,9 +33,9 @@ export function Request( ) {
 export function Cookie( ) {
 	const cookie: object = { cookie: document.cookie }
 	console.log( cookie )
-	/* console.log( getDOM( ).getDefaultDocument( ).cookie ) */
+	console.log( getDOM( ).getDefaultDocument( ).cookie )
 	return cookie
-}
+} */
 
 
 
@@ -61,5 +64,6 @@ export function Cookie( ) {
 	}
 	
 } */
+
 
 
