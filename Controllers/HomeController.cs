@@ -2,8 +2,10 @@
 
 
 
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NgCore.Models;
 using NgCore.Pre;
 
 
@@ -30,9 +32,9 @@ namespace NgCore.Controllers {
 			return View( );
 		}
 		
-		/* [ HttpGet ] */
+		[ HttpGet ]
 		public IActionResult Error( ) {
-			return View( /* new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier } */ );
+			return View( new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier } );
 		}
 		
 		/* public async Task<IActionResult> Index( ) {

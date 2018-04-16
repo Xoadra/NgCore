@@ -13,11 +13,7 @@
 		"build:webpack": "webpack --config webpack.config.js --progress --color",
 		"build:vendor": "webpack --config webpack.vendor.js --progress --color",
 		"build:dev": "npm run build:vendor && npm run build:webpack",
-		"build:prod": "npm run build:vendor -- --env.prod && npm run build:webpack -- --env.prod",
-		"clean": "rimraf root/build angular/build",
-		"test": "ng test",
-		"lint": "ng lint",
-		"e2e": "ng e2e"
+		"build:prod": "npm run build:vendor -- --env.prod && npm run build:webpack -- --env.prod"
 	},
 	"private": true,
 	"dependencies": {
@@ -82,7 +78,7 @@
 		"zone.js": "^0.8.26"
 	},
 	"devDependencies": {
-		"@angular/cli": "^1.7.3",
+		"@angular/cli": "^1.7.4",
 		"@angular/compiler-cli": "^5.2.9",
 		"@angular/language-service": "^5.2.9",
 		"@ngtools/webpack": "^1.10.2",
@@ -92,7 +88,7 @@
 		"jasmine": "^3.1.0",
 		"jasmine-core": "^3.1.0",
 		"jasmine-spec-reporter": "~4.2.1",
-		"karma": "~2.0.0",
+		"karma": "^2.0.0",
 		"karma-chrome-launcher": "~2.2.0",
 		"karma-coverage-istanbul-reporter": "^1.4.2",
 		"karma-jasmine": "~1.1.0",

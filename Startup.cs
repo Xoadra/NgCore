@@ -55,6 +55,7 @@ namespace NgCore {
 		public void Configure( IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory log ) {
 			log.AddConsole( Configuration.GetSection( "Logging" ) );
 			log.AddDebug( );
+			app.UseStaticFiles( );
 			if ( env.IsDevelopment( ) ) {
 				app.UseDeveloperExceptionPage( );
 				// Webpack middleware settings for testing purposes
@@ -66,7 +67,7 @@ namespace NgCore {
 			}
 			else { app.UseExceptionHandler( "/Home/Error" ); }
 			/* app.UseDefaultFiles( ); */
-			app.UseStaticFiles( );
+			/* app.UseStaticFiles( ); */
 			/* app.UseStaticFiles( new StaticFileOptions {
 				FileProvider = new PhysicalFileProvider( Path.Combine( env.ContentRootPath, "node_modules" ) ),
 				RequestPath = "/node_modules"
@@ -102,6 +103,5 @@ namespace NgCore {
 		
 	}
 }
-
 
 

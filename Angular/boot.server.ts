@@ -2,17 +2,17 @@
 
 
 
+// Polyfills, but not yet sure why it is necessary here
+import './polyfills.ts'
+import 'zone.js/dist/zone-node'
+import 'zone.js'
+
 import { enableProdMode } from '@angular/core'
 import { createServerRenderer } from 'aspnet-prerendering'
 // Allows server-side rendering of Angular content
 import { ngAspnetCoreEngine, IEngineOptions, createTransferScript } from '@nguniversal/aspnetcore-engine'
 
 import { BackModule } from './app/app.server'
-
-// Polyfills, but not yet sure why it is necessary here
-import './polyfills.ts'
-import 'zone.js/dist/zone-node'
-import 'zone.js'
 
 
 

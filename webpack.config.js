@@ -15,6 +15,7 @@ const CheckerPlugin = require( 'awesome-typescript-loader' ).CheckerPlugin
 const BundleAnalyzerPlugin = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin
 
 
+
 // Module exports converted from object to arrow function to use environment variables
 module.exports = ( env ) => {
 	
@@ -32,18 +33,18 @@ module.exports = ( env ) => {
 		/* devtool: develop ? 'cheap-eval-source-map' : false, */
 		module: {
 			rules: [
-				/* {
+				{
 					test: /\.ts$/,
 					use: develop ? [
 						'awesome-typescript-loader?silent=true',
 						'angular2-template-loader', 'angular2-router-loader'
 					] : '@ngtools/webpack'
-				}, */
-				{
+				},
+				/* {
 					test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
 					include: /Angular/,
 					use: develop ? [ 'awesome-typescript-loader?silent=true', 'angular2-template-loader' ] : '@ngtools/webpack'
-				},
+				}, */
 				{
 					/* test: /\.(html|cshtml)$/, */
 					test: /\.html$/,
@@ -154,6 +155,5 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
-
 
 

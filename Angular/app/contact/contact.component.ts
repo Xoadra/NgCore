@@ -15,7 +15,11 @@ import { Component } from '@angular/core'
 } )
 
 
-export class ContactComponent {  }
+export class ContactComponent {
+	
+	page: string = 'Contact'
+	
+}
 
 
 

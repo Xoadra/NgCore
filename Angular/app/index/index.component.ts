@@ -5,7 +5,7 @@
 import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 
-/* import { PreService } from '../services/pre.service' */
+import { PreService } from '../services/pre.service'
 
 
 
@@ -20,8 +20,12 @@ import { Title } from '@angular/platform-browser'
 
 export class IndexComponent {
 	
-	constructor( /* private _pre: PreService,  */private _title: Title ) {  }
+	page: string = 'Index'
+	
+	
+	constructor( private _pre: PreService, private _title: Title ) {  }
 	
 }
+
 
 

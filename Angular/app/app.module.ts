@@ -13,8 +13,6 @@ import { RouteModule } from './app.routing'
 
 import { AppComponent } from './app.component'
 
-/* import { Platform } from './tools/prerender' */
-
 import { PreService } from './services/pre.service'
 
 

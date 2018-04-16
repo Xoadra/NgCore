@@ -15,7 +15,11 @@ import { Component } from '@angular/core'
 } )
 
 
-export class AboutComponent {  }
+export class AboutComponent {
+	
+	page: string = 'About'
+	
+}
 
 
 

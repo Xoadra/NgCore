@@ -2,6 +2,11 @@
 
 
 
+// Polyfills, but not yet sure why it is necessary here
+import './polyfills.ts'
+import 'zone.js/dist/zone-node'
+import 'zone.js'
+
 import { enableProdMode } from '@angular/core'
 import { createServerRenderer } from 'aspnet-prerendering'
 // Allows server-side rendering of Angular content
@@ -9,11 +14,6 @@ import { ngAspnetCoreEngine, IEngineOptions, createTransferScript } from '@nguni
 
 // NgModule for using AoT compilation for production
 const { BackModuleNgFactory } = require( './app/app.server.ngfactory' )
-
-// Polyfills, but not yet sure why it is necessary here
-import './polyfills.ts'
-import 'zone.js/dist/zone-node'
-import 'zone.js'
 
 
 

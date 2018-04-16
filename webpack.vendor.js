@@ -14,40 +14,39 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' )
 
 
-// Temporarily placed vendor code library lists for testing entry points using the DllPlugin
-const nodeModules = [
-	'@angular/animations',
-	'@angular/common',
-	'@angular/compiler',
-	'@angular/core',
-	'@angular/forms',
-	'@angular/http',
-	'@angular/platform-browser',
-	'@angular/platform-browser-dynamic',
-	'@angular/router',
-	'zone.js'
-	/* 'rxjs' */
-]
-const totalPolyfills = [
-	/* 'core-js/es6/reflect',
-	'core-js/es7/reflect',
-	'zone.js/dist/zone', */
-	'core-js',
-	'event-source-polyfill'
-]
-const localLibraries = [
-	/* './Angular/lib/jquery/dist/jquery',
-	'./Angular/lib/jquery-validation/dist/jquery.validate',
-	'./Angular/lib/bootstrap/dist/js/bootstrap',
-	'./Angular/js/site' */
-]
-
 
 // Module exports converted from object to arrow function to use environment variables
 module.exports = ( env ) => {
 	
 	// Environment identity, setting it to the returned boolean based upon the set environment
 	const develop = !( env && env.prod )
+	// Temporarily placed vendor code library lists for testing entry points using the DllPlugin
+	const nodeModules = [
+		'@angular/animations',
+		'@angular/common',
+		'@angular/compiler',
+		'@angular/core',
+		'@angular/forms',
+		'@angular/http',
+		'@angular/platform-browser',
+		'@angular/platform-browser-dynamic',
+		'@angular/router',
+		'zone.js'
+		/* 'rxjs' */
+	]
+	const totalPolyfills = [
+		/* 'core-js/es6/reflect',
+		'core-js/es7/reflect',
+		'zone.js/dist/zone', */
+		'core-js',
+		'event-source-polyfill'
+	]
+	const localLibraries = [
+		/* './Angular/lib/jquery/dist/jquery',
+		'./Angular/lib/jquery-validation/dist/jquery.validate',
+		'./Angular/lib/bootstrap/dist/js/bootstrap',
+		'./Angular/js/site' */
+	]
 	
 	
 	// Universal config for all vendor code bundles used for browser and server rendering
@@ -110,7 +109,7 @@ module.exports = ( env ) => {
 		/*
 			entry: { vendor: nodeModules.concat( localLibraries ).concat( [ 'aspnet-prerendering' ] ), polyfills: totalPolyfills }
 		*/
-		entry: { vendor: nodeModules.concat( totalPolyfills ).concat( [ 'aspnet-prerendering' ] ) },
+		entry: { vendor: nodeModules.concat( totalPolyfills.concat( [ 'aspnet-prerendering' ] ) ) },
 		/*
 			entry: { vendor: nodeModules.concat( localLibraries ).concat( totalPolyfills ).concat( [ 'aspnet-prerendering' ] ) },
 		*/
@@ -136,6 +135,5 @@ module.exports = ( env ) => {
 	return [ view, rear ]
 	
 }
-
 
 
